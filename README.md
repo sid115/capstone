@@ -2,11 +2,11 @@
 
 Essential data of the PV generator with 4 modules in series, all at STC:
 
-- $U_{PV,oc} = 86.4 V$
-- $U_{PV,MPP} = 70.4 V$ 
-- $I_{PV,sc} = 6.14 A$
-- $I_{PV,MPP} = 5.68 A$
-- $P_{PV,MPP} = 400 W$
+- $\U_{PV,oc} = 86.4 \V$
+- $\U_{PV,MPP} = 70.4 \V$ 
+- $\I_{PV,sc} = 6.14 \A$
+- $\I_{PV,MPP} = 5.68 \A$
+- $\P_{PV,MPP} = 400 \W$
 
 ## Steps
 
@@ -25,4 +25,4 @@ Essential data of the PV generator with 4 modules in series, all at STC:
 
 1. Install [PLECS Standalone](https://www.plexim.com/download/standalone)
 1. Get a [Student License](https://plexim.com/store/students) 
-> use your smail address (...@smail.th-koeln.de)
+    > use your smail address (...@smail.th-koeln.de)
