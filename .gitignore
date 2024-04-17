@@ -1,1 +1,5 @@
 *.autosave
+*.aux
+*.log
+*.out
+*.toc
