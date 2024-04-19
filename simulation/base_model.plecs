@@ -55,11 +55,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [1200, 27; 3497, 1556]
-    ZoomFactor    1.44895
+    Location      [0, 26; 1539, 832]
+    ZoomFactor    1.26616
     SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  69
+    BrowserWidth  134
     Component {
       Type          DCVoltageSource
       Name          "U_dc"
@@ -1005,20 +1005,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [2, 27; 1196, 1897]
+      Location      [0, 23; 1536, 813]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAPkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAASsAAAAyfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABKwAAABEAP///wAABKwAAAZjAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAASoA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAeAAAAAwfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABfAP///wAAB4AAAAL3AAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"AAAAH0AAAAJAAAAfQAAAAYAAAB9AAAABwAAAH0AAAAEAAAAfQAAAAUAAAB9AAAAAgAAAH0AAAADAA"
-"AAfQAAAAEAAAB9AAAEngAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAGpAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AL1AAAAAQAAAAAAAAPoAAAAABA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAB"
+"AAAAH0AAAAFAAAAfQAAAAYAAAB9AAAABwAAAH0AAAADAAAAfQAAAAgAAAB9AAAACQAAAH0AAAdrAA"
+"AACwEAAAEAAAAAAAAAAAAAAAB9/////wAAAIEAAAAAAAAACwAAAfMAAAABAAAAAAAAAH0AAAABAAA"
+"AAAAAAH0AAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
+"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAABH4AAAABAAAAAAAAA+gAA"
+"AAAKw=="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -1027,7 +1027,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Zeit in s"
@@ -1073,7 +1073,7 @@ Plecs {
         MaxValue      1
         Signals       {}
         SignalTypes   [ ]
-        AxisLabel     "Spannung in V"
+        AxisLabel     "Current / V"
         Untangle      0
         KeepBaseline  off
         BaselineValue 0
@@ -1097,7 +1097,7 @@ Plecs {
         MaxValue      1
         Signals       {}
         SignalTypes   [ ]
-        AxisLabel     "Frequenz in Hz"
+        AxisLabel     "Power / W"
         Untangle      0
         KeepBaseline  off
         BaselineValue 0
@@ -1362,7 +1362,7 @@ Plecs {
       Type          From
       Name          "From15"
       Show          off
-      Position      [50, 640]
+      Position      [340, 540]
       Direction     left
       Flipped       on
       LabelPosition north
@@ -1381,7 +1381,7 @@ Plecs {
       Type          From
       Name          "From18"
       Show          off
-      Position      [50, 660]
+      Position      [340, 560]
       Direction     left
       Flipped       on
       LabelPosition north
@@ -1400,7 +1400,7 @@ Plecs {
       Type          Product
       Name          "p_trans"
       Show          on
-      Position      [100, 650]
+      Position      [390, 550]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -1430,7 +1430,7 @@ Plecs {
       SrcComponent  "Components/Control/Filters/Moving Average"
       Name          "P_R"
       Show          on
-      Position      [165, 650]
+      Position      [455, 550]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -1465,7 +1465,7 @@ Plecs {
       Type          SignalMux
       Name          "Mux11"
       Show          off
-      Position      [210, 645]
+      Position      [500, 545]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1479,7 +1479,7 @@ Plecs {
       Type          Goto
       Name          "Goto2"
       Show          off
-      Position      [245, 645]
+      Position      [535, 545]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1906,13 +1906,13 @@ Plecs {
       Type          Signal
       SrcComponent  "p_trans"
       SrcTerminal   1
-      Points        [130, 650]
+      Points        [420, 550]
       Branch {
         DstComponent  "P_R"
         DstTerminal   2
       }
       Branch {
-        Points        [130, 620; 195, 620; 195, 640]
+        Points        [420, 520; 485, 520]
         DstComponent  "Mux11"
         DstTerminal   2
       }
@@ -1921,7 +1921,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From15"
       SrcTerminal   1
-      Points        [65, 640; 65, 645]
+      Points        [355, 540; 355, 545]
       DstComponent  "p_trans"
       DstTerminal   2
     }
@@ -1929,7 +1929,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From18"
       SrcTerminal   1
-      Points        [65, 660; 65, 655]
+      Points        [355, 560; 355, 555]
       DstComponent  "p_trans"
       DstTerminal   3
     }
