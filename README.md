@@ -1,6 +1,6 @@
 # Single-Phase MPP-Tracking of a PV Generator on a Resistor
 
-> Markdown Cheat Sheet can be found [here] (https://images.datacamp.com/image/upload/v1697798108/Markdown_Cheat_Sheet_9657d9746f.png)
+> A Markdown cheat sheet can be found [here](https://images.datacamp.com/image/upload/v1697798108/Markdown_Cheat_Sheet_9657d9746f.png).
 
 Essential data of the PV generator with 4 modules in series, all at STC:
 
