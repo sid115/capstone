@@ -1,6 +1,7 @@
 # Single-Phase MPP-Tracking of a PV Generator on a Resistor
 
-> A Markdown cheat sheet can be found [here](https://images.datacamp.com/image/upload/v1697798108/Markdown_Cheat_Sheet_9657d9746f.png).
+> [!TIP]
+> Check out [this](https://guides.github.com/features/mastering-markdown/) guide about basic Markdown writing and formatting syntax. You can use [this](https://dillinger.io/) online editor to preview your Markdown files. Also, you might want to have a look at my GitHub tutorial [here](https://github.com/sid115/GitHubTutorial).
 
 Essential data of the PV generator with 4 modules in series, all at STC:
 

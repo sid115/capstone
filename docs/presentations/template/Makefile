@@ -1,14 +1,14 @@
-PAPER=pres
+MAIN=pres
 TEXC=pdflatex
 OUTDIR=../../../assets/presentations
-X=$(shell grep -oP '(?<=Capstone Meeting \\#)\d+' $(PAPER).tex)
+OUTNAME=$(shell basename `pwd`)
 
-all: $(PAPER)
+all: $(MAIN)
 
-$(PAPER): $(PAPER).tex
-	$(TEXC) $(PAPER).tex
+$(MAIN): $(MAIN).tex
+	$(TEXC) $(MAIN).tex
 	mkdir -p $(OUTDIR)
-	mv $(PAPER).pdf $(OUTDIR)/meeting_$(X).pdf
+	mv $(MAIN).pdf $(OUTDIR)/$(OUTNAME).pdf
 
 clean:
 	rm -f *.aux *.log *.out *.toc
