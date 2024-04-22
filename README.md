@@ -13,9 +13,12 @@ Essential data of the PV generator with 4 modules in series, all at STC:
 ## Steps
 
 1. Modelling a PV generator depending on irradiation and temperature in PLECS
+    - Lookup-table using PLECS block
 1. Setting up a simulation environment: Refining template and extending it with MPP algorithm
+    - Maximize power, voltage not important
+    - Measure average power over up to 3 periods via effective capacitor current, $\rightarrow$ sensor can also be used for load drop detection 
     - Transformer ratio?
-    - Operating points for different modulation degrees m from 0 (idle) to 1 (short circuit)
+    - Operating points for different modulation degrees m from 0 (idle) to 1 (short circuit) (ramp m with PV generator connected should return characteristic curve)
 1. Load drop detection: Smart shutdown and start-up routine with detection if load is present.
     - System can oscillate (LC undamped)
     - only with sensor for capacitor voltage and current
