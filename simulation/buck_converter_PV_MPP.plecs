@@ -1,9 +1,9 @@
 Plecs {
-  Name          "Tiefsetzsteller_automat_Tracker"
-  Version       "4.4"
+  Name          "buck_converter_PV_MPP"
+  Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
-  StopTime      "simulationsdauer"
+  TimeSpan      "simulationsdauer"
   Timeout       ""
   Solver        "dopri"
   MaxStep       "1e-6"
@@ -14,15 +14,20 @@ Plecs {
   RelTol        "1e-3"
   AbsTol        "-1"
   TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
   SyncFixedStepTasks "2"
   UseSingleCommonBaseRate "2"
   LossVariableLimitExceededMsg "3"
   NegativeSwitchLossMsg "3"
   DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "2"
+  DatatypeInheritanceConflictMsg "1"
+  ContSampleTimeConflictMsg "1"
   StiffnessDetectionMsg "2"
   MaxConsecutiveZCs "1000"
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
+  FixedPointDatatypeOverride "1"
   InitializationCommands "simulationsdauer=5;\n\n% Passive Komponenten\nL=267e"
 "-6;\nC_out=10e-6;\nR_load=10;\n\n% Schaltfrequenz\nfs=50e3;\n\n% MPP Tracker"
 "\nMPP_Step = 0.005;\nMPP_Aufrufperiode = 700/fs;"
@@ -40,6 +45,7 @@ Plecs {
   CodeGenTargetSettings ""
   ExtendedMatrixPrecision "1"
   MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "1"
   EnableStateSpaceSplitting "2"
   DisplayStateSpaceSplitting "1"
   DiscretizationMethod "2"
@@ -49,7 +55,7 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "47"
   Schematic {
-    Location      [1919, 30; 2744, 554]
+    Location      [0, 23; 1707, 922]
     ZoomFactor    1.14437
     SliderPosition [48, 0]
     ShowBrowser   off
@@ -61,6 +67,7 @@ Plecs {
       Position      [445, 320]
       Direction     left
       Flipped       off
+      LabelPosition north
       Parameter {
         Variable      "L"
         Value         "L"
@@ -79,6 +86,7 @@ Plecs {
       Position      [515, 355]
       Direction     up
       Flipped       off
+      LabelPosition east
       Parameter {
         Variable      "R"
         Value         "R_load"
@@ -92,6 +100,7 @@ Plecs {
       Position      [365, 320]
       Direction     left
       Flipped       off
+      LabelPosition south
     }
     Component {
       Type          Reference
@@ -101,9 +110,8 @@ Plecs {
       Position      [180, 205]
       Direction     up
       Flipped       off
+      LabelPosition south
       Frame         [-20, -20; 20, 20]
-      LabelPosition [0, 23]
-      LabelAlign    up
       Parameter {
         Variable      "sampling"
         Value         "1"
@@ -115,12 +123,12 @@ Plecs {
         Show          off
       }
       Parameter {
-        Variable      "offset"
+        Variable      "carrier_phaseshift"
         Value         "0"
         Show          off
       }
       Parameter {
-        Variable      "input_limits"
+        Variable      "carrier_limits"
         Value         "[0 1]"
         Show          off
       }
@@ -147,6 +155,7 @@ Plecs {
       Position      [420, 145]
       Direction     up
       Flipped       off
+      LabelPosition south
       Location      [51, 156; 1493, 977]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAG4A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
@@ -233,6 +242,12 @@ Plecs {
       Position      [320, 180]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "C_A"
+        Path          ""
+        Signals       {"Capacitor voltage"}
+      }
     }
     Component {
       Type          MosfetWithDiode
@@ -241,6 +256,7 @@ Plecs {
       Position      [265, 290]
       Direction     up
       Flipped       off
+      LabelPosition east
       Parameter {
         Variable      "Ron"
         Value         "0"
@@ -257,6 +273,11 @@ Plecs {
         Show          off
       }
       Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
         Variable      "T_init"
         Value         "0"
         Show          off
@@ -269,6 +290,7 @@ Plecs {
       Position      [40, 410]
       Direction     up
       Flipped       off
+      LabelPosition east
     }
     Component {
       Type          Diode
@@ -277,6 +299,7 @@ Plecs {
       Position      [265, 355]
       Direction     down
       Flipped       off
+      LabelPosition east
       Parameter {
         Variable      "Vf"
         Value         "0"
@@ -293,7 +316,22 @@ Plecs {
         Show          off
       }
       Parameter {
+        Variable      "Rth"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
         Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "SwitchModel"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "f_grid"
         Value         "0"
         Show          off
       }
@@ -305,6 +343,7 @@ Plecs {
       Position      [335, 350]
       Direction     up
       Flipped       off
+      LabelPosition west
     }
     Component {
       Type          Capacitor
@@ -313,6 +352,7 @@ Plecs {
       Position      [475, 350]
       Direction     down
       Flipped       on
+      LabelPosition west
       Parameter {
         Variable      "C"
         Value         "C_out"
@@ -331,6 +371,7 @@ Plecs {
       Position      [365, 170]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "2"
@@ -344,6 +385,17 @@ Plecs {
       Position      [320, 130]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "C_A"
+        Path          ""
+        Signals       {}
+      }
+      Probe {
+        Component     "R_A"
+        Path          ""
+        Signals       {"Resistor current"}
+      }
     }
     Component {
       Type          SignalMux
@@ -352,6 +404,7 @@ Plecs {
       Position      [365, 120]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "2"
@@ -365,6 +418,7 @@ Plecs {
       Position      [40, 325]
       Direction     down
       Flipped       on
+      LabelPosition east
       Parameter {
         Variable      "DiscretizationBehavior"
         Value         "3"
@@ -383,6 +437,7 @@ Plecs {
       Position      [115, 320]
       Direction     up
       Flipped       off
+      LabelPosition west
     }
     Component {
       Type          Sum
@@ -391,6 +446,7 @@ Plecs {
       Position      [435, 495]
       Direction     up
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "IconShape"
         Value         "1"
@@ -406,6 +462,11 @@ Plecs {
         Value         "10"
         Show          off
       }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
     }
     Component {
       Type          Product
@@ -414,6 +475,12 @@ Plecs {
       Position      [375, 510]
       Direction     up
       Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "IconShape"
+        Value         "1"
+        Show          off
+      }
       Parameter {
         Variable      "Inputs"
         Value         "2"
@@ -424,6 +491,11 @@ Plecs {
         Value         "10"
         Show          off
       }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
     }
     Component {
       Type          Constant
@@ -432,9 +504,8 @@ Plecs {
       Position      [300, 520]
       Direction     right
       Flipped       off
+      LabelPosition south
       Frame         [-20, -10; 20, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
       Parameter {
         Variable      "Value"
         Value         "8.76e-6"
@@ -453,6 +524,7 @@ Plecs {
       Position      [295, 480]
       Direction     up
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "IconShape"
         Value         "1"
@@ -468,6 +540,11 @@ Plecs {
         Value         "10"
         Show          off
       }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
     }
     Component {
       Type          Constant
@@ -476,9 +553,8 @@ Plecs {
       Position      [245, 505]
       Direction     right
       Flipped       off
+      LabelPosition south
       Frame         [-10, -10; 10, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
       Parameter {
         Variable      "Value"
         Value         "1"
@@ -497,6 +573,7 @@ Plecs {
       Position      [215, 475]
       Direction     up
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Operator"
         Value         "3"
@@ -510,6 +587,12 @@ Plecs {
       Position      [160, 475]
       Direction     up
       Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "IconShape"
+        Value         "1"
+        Show          off
+      }
       Parameter {
         Variable      "Inputs"
         Value         "*/"
@@ -520,6 +603,11 @@ Plecs {
         Value         "10"
         Show          off
       }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
     }
     Component {
       Type          Constant
@@ -528,9 +616,8 @@ Plecs {
       Position      [80, 485]
       Direction     right
       Flipped       off
+      LabelPosition south
       Frame         [-25, -10; 25, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
       Parameter {
         Variable      "Value"
         Value         "39.1"
@@ -549,6 +636,7 @@ Plecs {
       Position      [205, 325]
       Direction     down
       Flipped       on
+      LabelPosition west
       Parameter {
         Variable      "C"
         Value         "100e-6"
@@ -567,6 +655,7 @@ Plecs {
       Position      [635, 200]
       Direction     up
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "DialogGeometry"
         Value         "[1679 328 1802 1051]"
@@ -608,6 +697,11 @@ Plecs {
         Show          off
       }
       Parameter {
+        Variable      "TerminalBasedSampleTimes"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
         Variable      "Parameters"
         Value         ""
         Show          off
@@ -628,11 +722,21 @@ Plecs {
         Show          off
       }
       Parameter {
+        Variable      "HighlightLevel"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
         Variable      "Declarations"
-        Value         "// Variablendeklarationen\n\nfloat a = 0; //Tastgrad\nf"
-"loat MPP_Step = 0;\nfloat direction = 1;\nfloat direction_k_minus_1 = 1;\nflo"
-"at U_load = 0; // Widerstandsspannung \nfloat I_load = 0; // Widerstandsstrom"
-"\nfloat P_load_k_minus_1 = 0; // Widerstandsleistung im letzten Zeitschritt\n"
+        Value         "// Variablendeklarationen\n"
+"\n"
+"float a = 0; //Tastgrad\n"
+"float MPP_Step = 0;\n"
+"float direction = 1;\n"
+"float direction_k_minus_1 = 1;\n"
+"float U_load = 0; // Widerstandsspannung \n"
+"float I_load = 0; // Widerstandsstrom\n"
+"float P_load_k_minus_1 = 0; // Widerstandsleistung im letzten Zeitschritt\n"
 "float P_load = 0;\t// Widerstandsleistung\n"
         Show          off
       }
@@ -671,6 +775,16 @@ Plecs {
         Value         ""
         Show          off
       }
+      Parameter {
+        Variable      "StoreCustomStateFcn"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "RestoreCustomStateFcn"
+        Value         ""
+        Show          off
+      }
     }
     Component {
       Type          SignalMux
@@ -679,6 +793,7 @@ Plecs {
       Position      [580, 200]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "3"
@@ -692,6 +807,12 @@ Plecs {
       Position      [510, 200]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "R_A"
+        Path          ""
+        Signals       {"Resistor current"}
+      }
     }
     Component {
       Type          SignalDemux
@@ -700,6 +821,7 @@ Plecs {
       Position      [695, 200]
       Direction     right
       Flipped       on
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "2"
@@ -713,20 +835,21 @@ Plecs {
       Position      [965, 270]
       Direction     up
       Flipped       off
-      Location      [2880, 30; 3840, 1020]
+      LabelPosition south
+      Location      [747, 26; 1707, 946]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAMwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAASwAAAAb/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABLAAAABfAP///wAABLAAAARCAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAPEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAWgAAAAiPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABaAAAABxAP///wAABaAAAASzAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"gAAAH0AAAAHAAAAfQAAAAgAAAB9AAAACQAAAH0AAAABAAAAfQAAAAIAAAB9AAAAAwAAAH0AAAAEAA"
-"AAfQAAAAUAAAB9AAAEmwAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAIuAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAH0AAAAGAAAAfQAAAAcAAAB9AAAABAAAAH0AAAAFAAAAfQAAAAIAAAB9AAAAAwAAAH0AAAABAA"
+"AAfQAAAAgAAAB9AAAFhgAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAAKOAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AJtAAAAAQAAAAAAAAPoAAAAADE="
+"AL4AAAAAQAAAAAAAAPoAAAAADU="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA"
 "AEAAAAEAAAAAQL//y7g///MzAAAAAAAAQL//wAA/////wAAAAAAAQL//0+w/////wAAAAAAAQL//x"
 "LA/////wAAAAAABAAAAAEAAAAAAQAAAAABAAAAAAEAAAAABAAAAAEAAAABAAAAAQAAAAEAAAABAAA"
@@ -850,6 +973,7 @@ Plecs {
       Position      [840, 265]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "3"
@@ -863,6 +987,7 @@ Plecs {
       Position      [840, 330]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "2"
@@ -876,6 +1001,17 @@ Plecs {
       Position      [765, 270]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "I"
+        Path          ""
+        Signals       {"Source voltage"}
+      }
+      Probe {
+        Component     "D1"
+        Path          ""
+        Signals       {"Diode voltage"}
+      }
     }
     Component {
       Type          PlecsProbe
@@ -884,6 +1020,12 @@ Plecs {
       Position      [765, 345]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "I"
+        Path          ""
+        Signals       {"Source current"}
+      }
     }
     Component {
       Type          SignalDemux
@@ -892,6 +1034,7 @@ Plecs {
       Position      [810, 270]
       Direction     right
       Flipped       on
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "2"
@@ -905,6 +1048,12 @@ Plecs {
       Position      [765, 310]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "R_A"
+        Path          ""
+        Signals       {"Resistor current"}
+      }
     }
     Component {
       Type          PlecsProbe
@@ -913,6 +1062,12 @@ Plecs {
       Position      [765, 225]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "C_A"
+        Path          ""
+        Signals       {"Capacitor voltage"}
+      }
     }
     Component {
       Type          PlecsProbe
@@ -921,6 +1076,12 @@ Plecs {
       Position      [510, 155]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "C_A"
+        Path          ""
+        Signals       {"Capacitor voltage"}
+      }
     }
     Component {
       Type          Step
@@ -929,6 +1090,7 @@ Plecs {
       Position      [360, 430]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Time"
         Value         "2.5"
@@ -957,9 +1119,8 @@ Plecs {
       Position      [510, 240]
       Direction     right
       Flipped       off
+      LabelPosition south
       Frame         [-35, -10; 35, 10]
-      LabelPosition [0, 13]
-      LabelAlign    up
       Parameter {
         Variable      "Value"
         Value         "MPP_Step"
@@ -978,6 +1139,7 @@ Plecs {
       Position      [840, 425]
       Direction     right
       Flipped       off
+      LabelPosition south
       Parameter {
         Variable      "Width"
         Value         "3"
@@ -991,6 +1153,12 @@ Plecs {
       Position      [765, 390]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "I"
+        Path          ""
+        Signals       {"Source power"}
+      }
     }
     Component {
       Type          PlecsProbe
@@ -999,6 +1167,127 @@ Plecs {
       Position      [765, 425]
       Direction     right
       Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "R_A"
+        Path          ""
+        Signals       {"Resistor power"}
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "Dreieck"
+      Show          on
+      Position      [510, 635]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "Triangular Wave"
+        Path          "Symmetrical PWM/Configurable\\nSubsystem/Natural"
+        Signals       {"Output"}
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope2"
+      Show          on
+      Position      [620, 645]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [0, 23; 1707, 940]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAIMA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAlgAAAAovw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAACWAAAABxAP///wAACgAAAAU9AAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAH0AAAAGAAAAfQAAAAcAAAB9AAAABAAAAH0AAAAFAAAAfQAAAAIAAAB9AAAAAwAAAH0AAAABAA"
+"AAfQAAAAgAAAB9AAABBQAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAADQAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AA1AAAAAQAAAAAAAAPoAAAAADU="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "1"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Zeit in s"
+      ShowLegend    "1"
+      Axis {
+        Name          base64 "SW5kdWt0aXZpdMOkdHNzdHJvbSAoZ3LDvG4pOyAgICAgICAg"
+"IExhc3RzdHJvbSAocm90KQ=="
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        AxisLabel     "Strom in A"
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          base64 "RGlvZGVuc3Bhbm51bmcgKGdyw7xuKTsgICAgICBMYXN0c3Bh"
+"bm51bmcocm90KQ=="
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        AxisLabel     "Spannung in V"
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "Mux9"
+      Show          off
+      Position      [585, 600]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
     }
     Connection {
       Type          Wire
@@ -1239,14 +1528,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Symmetrical PWM"
-      SrcTerminal   1
-      Points        [230, 205]
-      DstComponent  "FETD"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Mux7"
       SrcTerminal   1
       Points        [870, 330; 870, 275]
@@ -1382,8 +1663,15 @@ Plecs {
       Points        [710, 195]
       Branch {
         Points        [710, 90; 140, 90; 140, 205]
-        DstComponent  "Symmetrical PWM"
-        DstTerminal   2
+        Branch {
+          DstComponent  "Symmetrical PWM"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [140, 605]
+          DstComponent  "Mux9"
+          DstTerminal   3
+        }
       }
       Branch {
         Points        [935, 195]
@@ -1391,105 +1679,48 @@ Plecs {
         DstTerminal   1
       }
     }
+    Connection {
+      Type          Signal
+      SrcComponent  "Dreieck"
+      SrcTerminal   1
+      Points        [555, 635; 555, 595]
+      DstComponent  "Mux9"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux9"
+      SrcTerminal   1
+      Points        [595, 620; 590, 620]
+      DstComponent  "Scope2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Symmetrical PWM"
+      SrcTerminal   1
+      Points        [215, 205]
+      Branch {
+        Points        [230, 205]
+        DstComponent  "FETD"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [215, 650]
+        DstComponent  "Scope2"
+        DstTerminal   2
+      }
+    }
     Annotation {
-      Name          base64 "UFYtIEdlbmVyYXRvcm1vZGVsbCBmw7xyIGRpZSBNUFAgR3LDts"
-"OfZW4KfjQzMiw2VjsgfjgsOTFBLCB+Myw4NSBrVywgflVvYz01NDMsMlYgSXNjPTksNDdB"
+      Name          base64 "PGh0bWw+PGJvZHk+CjxwIGFsaWduPSJjZW50ZXIiPlBWLSBHZW"
+"5lcmF0b3Jtb2RlbGwgZsO8ciBkaWUgTVBQIEdyw7bDn2VuPC9wPgo8cCBhbGlnbj0iY2VudGVyIj5"
+"+NDMyLDZWOyB+OCw5MUEsIH4zLDg1IGtXLCB+VW9jPTU0MywyViBJc2M9OSw0N0E8L3A+PC9ib2R5"
+"PjwvaHRtbD4="
       Position      [280, 565]
     } 
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/Lastspannung"
-    Probe {
-      Component     "C_A"
-      Path          ""
-      Signals       {"Capacitor voltage"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/I_R"
-    Probe {
-      Component     "C_A"
-      Path          ""
-      Signals       {}
-    }
-    Probe {
-      Component     "R_A"
-      Path          ""
-      Signals       {"Resistor current"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/Laststrom"
-    Probe {
-      Component     "R_A"
-      Path          ""
-      Signals       {"Resistor current"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/PV-Spg"
-    Probe {
-      Component     "I"
-      Path          ""
-      Signals       {"Source voltage"}
-    }
-    Probe {
-      Component     "D1"
-      Path          ""
-      Signals       {"Diode voltage"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/PV-Strom"
-    Probe {
-      Component     "I"
-      Path          ""
-      Signals       {"Source current"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/Laststrom1"
-    Probe {
-      Component     "R_A"
-      Path          ""
-      Signals       {"Resistor current"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/Lastspannung1"
-    Probe {
-      Component     "C_A"
-      Path          ""
-      Signals       {"Capacitor voltage"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/Lastspannung2"
-    Probe {
-      Component     "C_A"
-      Path          ""
-      Signals       {"Capacitor voltage"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/PV-Leistung"
-    Probe {
-      Component     "I"
-      Path          ""
-      Signals       {"Source power"}
-    }
-  }
-  ProbeBlock {
-    Tag           "Tiefsetzsteller_automat_Tracker/Lastleistung"
-    Probe {
-      Component     "R_A"
-      Path          ""
-      Signals       {"Resistor power"}
-    }
   }
   Script {
     Name          "init"
     Script        "Kp=0.5"
   }
 }
-DemoSignature "Z113i/sWQ7h9a/ln9H0nxIhqXazKa5evzGjgq9b7qTc="
