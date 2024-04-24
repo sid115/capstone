@@ -1,5 +1,5 @@
 Plecs {
-  Name          "base_model_pv_m_testing"
+  Name          "base_model_pv_module_m_ramp"
   Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -976,7 +976,7 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [2, 27; 1196, 1897]
+      Location      [-2395, 27; -1201, 1897]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAPkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAASsAAAAkfw"
@@ -1413,7 +1413,7 @@ Plecs {
       }
       Parameter {
         Variable      "T_period"
-        Value         "1/(2*fN)"
+        Value         "TN"
         Show          off
       }
       Parameter {

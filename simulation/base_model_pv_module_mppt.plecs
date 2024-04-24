@@ -28,14 +28,15 @@ Plecs {
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
-  InitializationCommands "Udc   = 70.4;\nLf    = 50e-6;\nCf    = 15e-6;  % Lf "
-"& Cf => fres = 10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 50*1.0;\nTN    = "
-"1/fN;\n\n% PV\nsun = 1; % sun strength. float between 0 and 1\npv_string = 22"
-"; % number of pv modules in string\nstrings = 1; % number of strings in paral"
-"lel\npv_cap = 1e-3; % pv array output capacitance in F (vanilla: 1e-6)\npv_in"
-"it_vin = 1; % pv array initial input voltage in V\ntemperature = 25; % in deg"
-". celsius. can be 0, 25, 50\n\n% MPPT\nm_init = 0.4;\nm_step = 0.005;\nmpp_ca"
-"ll = 1/fN;\n\nsim_duration = 100 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+  InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
+"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 50*1.0;\nTN    = 1/fN;\n\n% PV\n"
+"sun = 1; % sun strength. float between 0 and 1\npv_string = 22; % number of p"
+"v modules in string\nstrings = 1; % number of strings in parallel\npv_cap = 1"
+"e-3; % pv array output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % p"
+"v array initial input voltage in V\ntemperature = 25; % in deg. celsius. can "
+"be 0, 25, 50\n\n% MPPT\nm_init = 0.4;\nm_step = 0.005;\ni_C_avg_t = 1000/fPWM"
+"; % time to average |i_C|\nmppt_call = TN/2; % mppt call interval\n\nsim_dura"
+"tion = 100 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -976,7 +977,7 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [2, 27; 1196, 1897]
+      Location      [-2395, 27; -1201, 1897]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAPkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAASsAAAAkfw"
@@ -1413,7 +1414,7 @@ Plecs {
       }
       Parameter {
         Variable      "T_period"
-        Value         "1/(2*fN)"
+        Value         "TN"
         Show          off
       }
       Parameter {
@@ -2545,7 +2546,7 @@ Plecs {
       }
       Parameter {
         Variable      "Ts"
-        Value         "mpp_call"
+        Value         "mppt_call"
         Show          off
       }
       Parameter {
@@ -2607,11 +2608,11 @@ Plecs {
 "i_C = InputSignal(0,0);\n"
 "\n"
 "/* change direction if previous i_C is greater than current i_C */\n"
-"if (i_C_pre >= i_C) direction *= -1; // change direction\n"
+"if (i_C_pre > i_C) direction *= -1; // change direction\n"
 "// else keep direction -> do nothing\n"
 "\t\n"
 "/* calculate new m */\n"
-"m = m + m_step * direction;\n"
+"m += m_step * direction;\n"
 "\n"
 "/* restrict m */\n"
 "if (m < 0) m = 0.01;\n"
@@ -2715,7 +2716,7 @@ Plecs {
       Type          From
       Name          "From12"
       Show          off
-      Position      [610, 510]
+      Position      [500, 495]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2806,6 +2807,51 @@ Plecs {
         Value         "10"
         Show          off
       }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Control/Filters/Moving Average"
+      Name          "|i_C|avg"
+      Show          on
+      Position      [590, 495]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-15, -15; 15, 15]
+      Parameter {
+        Variable      "x0"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "T_period"
+        Value         "i_C_avg_t"
+        Show          off
+      }
+      Parameter {
+        Variable      "buffer_size"
+        Value         "256"
+        Show          off
+      }
+      Terminal {
+        Type          Output
+        Position      [19, 0]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-15, 0]
+        Direction     left
+      }
+    }
+    Component {
+      Type          Abs
+      Name          "Abs"
+      Show          on
+      Position      [535, 495]
+      Direction     right
+      Flipped       off
+      LabelPosition south
     }
     Connection {
       Type          Wire
@@ -3161,13 +3207,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "P_R"
-      SrcTerminal   1
-      DstComponent  "Mux11"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "p_trans"
       SrcTerminal   1
       Points        [360, 555]
@@ -3434,14 +3473,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "From12"
-      SrcTerminal   1
-      Points        [635, 510]
-      DstComponent  "Mux2"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Mux2"
       SrcTerminal   1
       DstComponent  "MPPT"
@@ -3490,6 +3521,35 @@ Plecs {
       SrcTerminal   2
       DstComponent  "Goto3"
       DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From12"
+      SrcTerminal   1
+      DstComponent  "Abs"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Abs"
+      SrcTerminal   2
+      DstComponent  "|i_C|avg"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "P_R"
+      SrcTerminal   1
+      DstComponent  "Mux11"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "|i_C|avg"
+      SrcTerminal   1
+      Points        [625, 495; 625, 530]
+      DstComponent  "Mux2"
+      DstTerminal   2
     }
     Annotation {
       Name          "<html><body>\n<p>deadtime = switch-on delay</p></body></h"
