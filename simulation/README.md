@@ -8,4 +8,5 @@
 
 # TODO
 - PV sim: adjust PV module parameters to match ours. I just grabbed a random working simulation from the internet that was dependent on temperature and irradiance and had implemented a lookup table for the IV curve.
-- MPPT: max power is not just dependent on i_C_max.
+- MPPT: P peaks at m_target = 0.39, but decreases to a stable P = 1274 W (see below) while m = m_target (the blue curve 'Subtract' is our m, not the green one). I cannot explain this behaviour. -Sid
+![P_m_target](./P_m_target.png)
