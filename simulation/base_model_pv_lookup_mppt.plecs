@@ -1,5 +1,5 @@
 Plecs {
-  Name          "base_model_pv_module_mppt"
+  Name          "base_model_pv_lookup_mppt"
   Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -32,11 +32,11 @@ Plecs {
 "10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 50*1.0;\nTN    = 1/fN;\n\n% PV\n"
 "sun = 1; % sun strength. float between 0 and 1\npv_string = 22; % number of p"
 "v modules in string\nstrings = 1; % number of strings in parallel\npv_cap = 1"
-"e-3; % pv array output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % p"
+"e-6; % pv array output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % p"
 "v array initial input voltage in V\ntemperature = 25; % in deg. celsius. can "
-"be 0, 25, 50\n\n% MPPT\nm_init = 0.4;\nm_step = 0.005;\ni_C_avg_t = 1000/fPWM"
-"; % time to average |i_C|\nmppt_call = TN/2; % mppt call interval\n\nsim_dura"
-"tion = 100 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+"be 0, 25, 50\n\n% MPPT\nm_init = 0.1;\nm_step = 0.01;\ni_C_avg_t = TN; % time"
+" to average |i_C|\nmppt_call = 2*i_C_avg_t; % mppt call interval\nEPS = 0.001"
+";\n\nsim_duration = 200 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -61,9 +61,9 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [1200, 27; 3752, 1556]
+    Location      [2479, 27; 3753, 1556]
     ZoomFactor    1.65813
-    SliderPosition [586, 0]
+    SliderPosition [160, 0]
     ShowBrowser   on
     BrowserWidth  157
     Component {
@@ -977,20 +977,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [-2395, 27; -1201, 1897]
+      Location      [1198, 25; 2472, 1576]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAPkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAASsAAAAkfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABKwAAABEAP///wAABKwAAAabAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAAAkfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABPwAAABEAP///wAABPwAAAVbAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"AAAAH0AAAAJAAAAfQAAAAYAAAB9AAAABwAAAH0AAAAEAAAAfQAAAAUAAAB9AAAAAgAAAH0AAAADAA"
-"AAfQAAAAEAAAB9AAAEngAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAGpAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAH0AAAADAAAAfQAAAAIAAAB9AAAACQAAAH0AAAAIAAAAfQAAAAUAAAB9AAAABAAAAH0AAAAHAA"
+"AAfQAAAAYAAAB9AAAE/AAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAGpAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AL1AAAAAQAAAAAAAAPoAAAAABA="
+"ANTAAAAAQAAAAAAAAPoAAAAABA="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -999,7 +999,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Zeit in s"
@@ -1334,7 +1334,7 @@ Plecs {
       Type          From
       Name          "From15"
       Show          off
-      Position      [280, 545]
+      Position      [280, 500]
       Direction     left
       Flipped       on
       LabelPosition north
@@ -1353,7 +1353,7 @@ Plecs {
       Type          From
       Name          "From18"
       Show          off
-      Position      [280, 565]
+      Position      [280, 520]
       Direction     left
       Flipped       on
       LabelPosition north
@@ -1372,7 +1372,7 @@ Plecs {
       Type          Product
       Name          "p_trans"
       Show          on
-      Position      [330, 555]
+      Position      [330, 510]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -1402,7 +1402,7 @@ Plecs {
       SrcComponent  "Components/Control/Filters/Moving Average"
       Name          "P_R"
       Show          on
-      Position      [395, 555]
+      Position      [395, 510]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -1414,7 +1414,7 @@ Plecs {
       }
       Parameter {
         Variable      "T_period"
-        Value         "TN"
+        Value         "i_C_avg_t"
         Show          off
       }
       Parameter {
@@ -1437,7 +1437,7 @@ Plecs {
       Type          SignalMux
       Name          "Mux11"
       Show          off
-      Position      [440, 550]
+      Position      [440, 505]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1451,7 +1451,7 @@ Plecs {
       Type          Goto
       Name          "Goto2"
       Show          off
-      Position      [475, 550]
+      Position      [475, 505]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1493,20 +1493,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [-2395, 27; -1201, 1897]
+      Location      [2561, 27; 3516, 1059]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAPkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAASsAAAAkfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABKwAAABEAP///wAABKwAAAabAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAO8AAAAkfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA7wAAABEAP///wAAA7wAAANTAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
 "AAAAGQAAAAJAAAAZAAAAAYAAABkAAAABwAAAGQAAAAEAAAAZAAAAAUAAABkAAAAAgAAAGQAAAADAA"
-"AAZAAAAAEAAABkAAAEngAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC6AAA"
+"AAZAAAAAEAAABkAAADrgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC6AAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"APkAAAAAQAAAAAAAAPoAAAAABA="
+"AL0AAAAAQAAAAAAAAPoAAAAABA="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA"
 "AEAAAACAAAAAQL//y7g///MzAAAAAAAAQH/////AAAAAAAAAAAAAgAAAAEAAAAAAQEAAAACAAAAAQ"
 "AAAAEAAAABAAAAAQAAAAIAAAABAAAAAAEAAAAAAgAAAAE/8AAAAAAAAAAAAAE/8AAAAAAAAAAAAAI"
@@ -1519,7 +1519,7 @@ Plecs {
       TimeRange     "0.0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -1936,8 +1936,8 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [1198, 25; 2472, 1554]
-        ZoomFactor    1
+        Location      [2559, 25; 3514, 1035]
+        ZoomFactor    1.77778
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -2452,11 +2452,11 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [1198, 25; 2472, 1576]
+      Location      [2561, 27; 3516, 1059]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAAvsAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAGMA////AAAAAwAAAZAAAABq/AEAAAAB+wAAABIAVABpAG0AZQBSAGEAbgBnAGUAAAAAAAA"
-"AAZAAAAB4AP///wAABPwAAAXyAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBv"
+"AAZAAAAB4AP///wAAA7wAAAPqAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBv"
 "AGwAQgBhAHIBAAAAAP////8AAAAAAAAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   ""
@@ -2505,18 +2505,18 @@ Plecs {
       Type          CScript
       Name          "MPPT"
       Show          on
-      Position      [705, 540]
+      Position      [705, 495]
       Direction     up
       Flipped       off
       LabelPosition south
       Parameter {
         Variable      "DialogGeometry"
-        Value         "[1200 25 1276 1571]"
+        Value         "[2560 25 1276 1051]"
         Show          off
       }
       Parameter {
         Variable      "NumInputs"
-        Value         "3"
+        Value         "4"
         Show          off
       }
       Parameter {
@@ -2581,7 +2581,11 @@ Plecs {
       }
       Parameter {
         Variable      "Declarations"
-        Value         "float m = 0; // modulation degree\n"
+        Value         "#include <stdlib.h>\n"
+"#include <math.h>\n"
+"\n"
+"static float EPS = 0.1; // minimum delta\n"
+"float m = 0; // modulation degree\n"
 "float m_step = 0; // value by which m is increased or reduced\n"
 "float direction = 1; // -1 (down) or 1 (up)\n"
 "float i_C = 0; // capacitor current in A\n"
@@ -2591,7 +2595,8 @@ Plecs {
       Parameter {
         Variable      "StartFcn"
         Value         "m_step = InputSignal(0,1);\n"
-"m = InputSignal(0,2); // set m to m_init"
+"m = InputSignal(0,2); // set m to m_init\n"
+"EPS = InputSignal(0,3); // set EPS to EPS_init"
         Show          off
       }
       Parameter {
@@ -2607,10 +2612,10 @@ Plecs {
 "/* read input */\n"
 "i_C = InputSignal(0,0);\n"
 "\n"
-"/* change direction if previous i_C is greater than current i_C */\n"
-"if (i_C_pre > i_C) direction *= -1; // change direction\n"
+"/* change direction if delta is geater than EPS */\n"
+"if (i_C_pre - i_C > EPS) direction *= -1; // change direction\n"
 "// else keep direction -> do nothing\n"
-"\t\n"
+"\n"
 "/* calculate new m */\n"
 "m += m_step * direction;\n"
 "\n"
@@ -2644,13 +2649,13 @@ Plecs {
       Type          SignalMux
       Name          "Mux2"
       Show          off
-      Position      [650, 540]
+      Position      [650, 495]
       Direction     right
       Flipped       off
       LabelPosition south
       Parameter {
         Variable      "Width"
-        Value         "3"
+        Value         "4"
         Show          off
       }
     }
@@ -2658,7 +2663,7 @@ Plecs {
       Type          Constant
       Name          "m_step"
       Show          on
-      Position      [605, 540]
+      Position      [605, 495]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2716,7 +2721,7 @@ Plecs {
       Type          From
       Name          "From12"
       Show          off
-      Position      [500, 495]
+      Position      [500, 450]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2754,7 +2759,7 @@ Plecs {
       Type          Goto
       Name          "Goto3"
       Show          off
-      Position      [760, 540]
+      Position      [760, 495]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2792,7 +2797,7 @@ Plecs {
       Type          Constant
       Name          "m_init"
       Show          on
-      Position      [605, 580]
+      Position      [570, 520]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2813,7 +2818,7 @@ Plecs {
       SrcComponent  "Components/Control/Filters/Moving Average"
       Name          "|i_C|avg"
       Show          on
-      Position      [590, 495]
+      Position      [590, 450]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -2848,10 +2853,30 @@ Plecs {
       Type          Abs
       Name          "Abs"
       Show          on
-      Position      [535, 495]
+      Position      [535, 450]
       Direction     right
       Flipped       off
       LabelPosition south
+    }
+    Component {
+      Type          Constant
+      Name          "EPS"
+      Show          on
+      Position      [530, 545]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-10, -10; 10, 10]
+      Parameter {
+        Variable      "Value"
+        Value         "EPS"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
     }
     Connection {
       Type          Wire
@@ -3207,24 +3232,9 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "p_trans"
-      SrcTerminal   1
-      Points        [360, 555]
-      Branch {
-        DstComponent  "P_R"
-        DstTerminal   2
-      }
-      Branch {
-        Points        [360, 525; 425, 525]
-        DstComponent  "Mux11"
-        DstTerminal   2
-      }
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "From15"
       SrcTerminal   1
-      Points        [295, 545; 295, 550]
+      Points        [295, 500; 295, 505]
       DstComponent  "p_trans"
       DstTerminal   2
     }
@@ -3232,16 +3242,9 @@ Plecs {
       Type          Signal
       SrcComponent  "From18"
       SrcTerminal   1
-      Points        [295, 565; 295, 560]
+      Points        [295, 520; 295, 515]
       DstComponent  "p_trans"
       DstTerminal   3
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Mux11"
-      SrcTerminal   1
-      DstComponent  "Goto2"
-      DstTerminal   1
     }
     Connection {
       Type          Signal
@@ -3468,6 +3471,7 @@ Plecs {
       Type          Signal
       SrcComponent  "m_step"
       SrcTerminal   1
+      Points        [630, 495; 630, 490]
       DstComponent  "Mux2"
       DstTerminal   3
     }
@@ -3509,14 +3513,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "m_init"
-      SrcTerminal   1
-      Points        [635, 580]
-      DstComponent  "Mux2"
-      DstTerminal   4
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "MPPT"
       SrcTerminal   2
       DstComponent  "Goto3"
@@ -3538,18 +3534,56 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "P_R"
+      SrcComponent  "EPS"
       SrcTerminal   1
-      DstComponent  "Mux11"
-      DstTerminal   3
+      Points        [635, 545]
+      DstComponent  "Mux2"
+      DstTerminal   5
     }
     Connection {
       Type          Signal
-      SrcComponent  "|i_C|avg"
+      SrcComponent  "m_init"
       SrcTerminal   1
-      Points        [625, 495; 625, 530]
+      Points        [625, 520; 625, 500]
       DstComponent  "Mux2"
-      DstTerminal   2
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "p_trans"
+      SrcTerminal   1
+      Points        [360, 510]
+      Branch {
+        DstComponent  "P_R"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [360, 480; 425, 480]
+        DstComponent  "Mux11"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux11"
+      SrcTerminal   1
+      DstComponent  "Goto2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "P_R"
+      SrcTerminal   1
+      Points        [425, 510]
+      Branch {
+        DstComponent  "Mux11"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [425, 480]
+        DstComponent  "Mux2"
+        DstTerminal   2
+      }
     }
     Annotation {
       Name          "<html><body>\n<p>deadtime = switch-on delay</p></body></h"
