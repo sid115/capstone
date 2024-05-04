@@ -28,11 +28,11 @@ Plecs {
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
-  InitializationCommands "Udc   = 70.4;\nLf    = 50e-6;\nCf    = 15e-6;  % Lf "
-"& Cf => fres = 10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 50*1.0;\nTN    = "
-"1/fN;\n\ni_C_avg_t = TN; % time to average |i_C|\nm_min = 0;\nm_max = 1.5;\nm"
-"_target = 0.53; % final value of m when using m'\nm_enable = 1; % 1 -> enable"
-" m' \n\nsim_duration = 100 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+  InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
+"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\ni_C_avg_t"
+" = TN; % time to average |i_C|\nm_min = 0;\nm_max = 1.5;\nm_target = 0.53; % "
+"final value of m when using m'\nm_enable = 1; % 1 -> enable m' \n\nsim_durati"
+"on = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -57,8 +57,8 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [0, 25; 1915, 1035]
-    ZoomFactor    0.9327
+    Location      [1198, 25; 3750, 1554]
+    ZoomFactor    2.57592
     SliderPosition [0, 0]
     ShowBrowser   on
     BrowserWidth  157
@@ -737,8 +737,8 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [1919, 25; 3194, 1555]
-        ZoomFactor    1
+        Location      [0, 0; 2558, 1559]
+        ZoomFactor    4.21399
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -942,8 +942,8 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 0; 636, 258]
-        ZoomFactor    1
+        Location      [0, 25; 1275, 1555]
+        ZoomFactor    4.21399
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -1291,8 +1291,8 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 0; 794, 381]
-        ZoomFactor    1
+        Location      [0, 0; 2558, 1559]
+        ZoomFactor    3.16049
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -2028,6 +2028,67 @@ Plecs {
             Show          off
           }
         }
+        Component {
+          Type          Scope
+          Name          "Scope"
+          Show          on
+          Position      [435, 335]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Location      [0, 0; 2558, 1581]
+          State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
+"wBvAG0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
+"AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAA"
+"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAACgAAAAYP"
+"AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
+"AAAAAAAAA=="
+          SavedViews    "AAAAAgAAAAA="
+          HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
+"AAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAADAAAAZAAAAAIAAABkAAAAAQAAAGQAAA"
+"AJAAAAZAAAAAgAAABkAAAAfQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
+"tAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
+"AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
+"AAAAAAQAAAAAQAAAAAAAAPoAAAAABA="
+          PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          Axes          "1"
+          TimeRange     "0.0"
+          ScrollingMode "1"
+          SingleTimeAxis "1"
+          Open          "0"
+          Ts            "-1"
+          SampleLimit   "0"
+          XAxisLabel    "Time / s"
+          ShowLegend    "1"
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
+          Fourier {
+            SingleXAxis       on
+            AxisLabel         "Frequency / Hz"
+            Scaling           0
+            PhaseDisplay      0
+            ShowFourierLegend off
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "sin1"
@@ -2213,13 +2274,6 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "Mux6"
-          SrcTerminal   1
-          DstComponent  "Symmetrical PWM"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
           SrcComponent  "m"
           SrcTerminal   1
           Points        [200, 245]
@@ -2261,6 +2315,21 @@ Plecs {
             DstTerminal   1
           }
         }
+        Connection {
+          Type          Signal
+          SrcComponent  "Mux6"
+          SrcTerminal   1
+          Points        [360, 140]
+          Branch {
+            DstComponent  "Symmetrical PWM"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [360, 335]
+            DstComponent  "Scope"
+            DstTerminal   1
+          }
+        }
         Annotation {
           Name          "<html><body>\n<p>deadtime = switch-on delay</p></body"
 "></html>"
@@ -2276,20 +2345,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 25; 955, 1057]
+      Location      [1198, 25; 2472, 1576]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAKkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA7wAAAPqAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAAA5fw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABPwAAABEAP///wAABPwAAAUHAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAGQAAAACAAAAZAAAAAEAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAAJAA"
-"AAZAAAAAgAAABkAAAAsgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACiAAA"
+"wAAAGQAAAACAAAAZAAAAAkAAABkAAAACAAAAGQAAAAFAAAAZAAAAAQAAABkAAAABwAAAGQAAAAGAA"
+"AAZAAAAAEAAABkAAAE/AAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACiAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAQAAAAAQAAAAAAAAPoAAAAABA="
+"ARaAAAAAQAAAAAAAAPoAAAAABA="
       PlotPalettes  "AAAAAQAAAAIAAAABAAAAAgAAAAEC//8u4P//zMwAAAAAAAEC//8AAP///"
 "/8AAAAAAAIAAAABAAAAAAEAAAAAAgAAAAEAAAABAAAAAQAAAAEAAAACAAAAAQAAAAABAAAAAAIAAA"
 "ABP/AAAAAAAAAAAAABP/AAAAAAAAAAAAACAAAAAQAAAAABAAAAAAEAAAABAAAAAAAAAAAAAAAAAAA"

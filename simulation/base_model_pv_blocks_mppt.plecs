@@ -29,9 +29,9 @@ Plecs {
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
-"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 50*1.0;\nTN    = 1/fN;\n\n% MPPT"
-"\nm_init = 0.4;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i_C|\nmpp"
-"t_call = TN; % mppt call interval\nEPS = 0.001;\n\nsim_duration = 100 * TN;\n"
+"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\n% MPPT\nm"
+"_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i_C|\nmppt_c"
+"all = 4*TN; % mppt call interval\nEPS = 0.001;\n\nsim_duration = 1000 * TN;\n"
 "\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
@@ -57,11 +57,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [0, 25; 1915, 1035]
-    ZoomFactor    0.9327
+    Location      [1200, 27; 3752, 1556]
+    ZoomFactor    2.57592
     SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  157
+    BrowserWidth  69
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -638,20 +638,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 25; 955, 1057]
+      Location      [2, 27; 1196, 1897]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAKkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA7wAAAPqAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAASsAAAAV/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABKwAAABEAP///wAABKwAAAbVAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAGQAAAACAAAAZAAAAAEAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAAJAA"
-"AAZAAAAAgAAABkAAAAsgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACiAAA"
+"wAAAGQAAAACAAAAZAAAAAkAAABkAAAACAAAAGQAAAAFAAAAZAAAAAQAAABkAAAABwAAAGQAAAAGAA"
+"AAZAAAAAEAAABkAAAEngAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACiAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAQAAAAAQAAAAAAAAPoAAAAABA="
+"AP8AAAAAQAAAAAAAAPoAAAAABA="
       PlotPalettes  "AAAAAQAAAAIAAAABAAAAAgAAAAEC//8u4P//zMwAAAAAAAEC//8AAP///"
 "/8AAAAAAAIAAAABAAAAAAEAAAAAAgAAAAEAAAABAAAAAQAAAAEAAAACAAAAAQAAAAABAAAAAAIAAA"
 "ABP/AAAAAAAAAAAAABP/AAAAAAAAAAAAACAAAAAQAAAAABAAAAAAEAAAABAAAAAAAAAAAAAAAAAAA"
@@ -1007,7 +1007,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 0; 430, 178]
+        Location      [1198, 25; 2472, 1554]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -1135,8 +1135,8 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 25; 955, 1035]
-        ZoomFactor    1
+        Location      [0, 0; 2558, 1559]
+        ZoomFactor    4.21399
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -1484,7 +1484,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [1919, 25; 3194, 1555]
+        Location      [0, 25; 1275, 1555]
         ZoomFactor    1.77778
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2241,8 +2241,8 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [1919, 25; 3194, 1555]
-        ZoomFactor    1
+        Location      [0, 25; 1275, 1555]
+        ZoomFactor    3.16049
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -2330,7 +2330,7 @@ Plecs {
           }
           Parameter {
             Variable      "T_period"
-            Value         "TN"
+            Value         "2*TN"
             Show          off
           }
           Parameter {
@@ -2472,8 +2472,8 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [1919, 25; 3194, 1555]
-        ZoomFactor    1
+        Location      [1200, 27; 2474, 1556]
+        ZoomFactor    3.16049
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -2487,7 +2487,7 @@ Plecs {
           LabelPosition south
           Parameter {
             Variable      "DialogGeometry"
-            Value         "[1920 25 1276 1571]"
+            Value         "[1202 27 1276 1571]"
             Show          off
           }
           Parameter {
@@ -2577,11 +2577,6 @@ Plecs {
           }
           Parameter {
             Variable      "OutputFcn"
-            Value         "OutputSignal(0,0) = m;"
-            Show          off
-          }
-          Parameter {
-            Variable      "UpdateFcn"
             Value         "/* adopt values */\n"
 "i_C_pre = i_C;\n"
 "\n"
@@ -2597,7 +2592,15 @@ Plecs {
 "\n"
 "/* restrict m */\n"
 "if (m < 0) m = 0.01;\n"
-"if (m > 1.5) m = 1.49;"
+"if (m > 1.5) m = 1.49;\n"
+"\n"
+"/* output m */\n"
+"OutputSignal(0,0) = m;"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         ""
             Show          off
           }
           Parameter {
@@ -2724,7 +2727,7 @@ Plecs {
           LabelPosition south
           Parameter {
             Variable      "Tag"
-            Value         "P"
+            Value         "i_C_abs_avg"
             Show          off
           }
           Parameter {

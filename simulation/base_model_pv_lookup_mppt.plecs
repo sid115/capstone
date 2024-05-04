@@ -29,14 +29,14 @@ Plecs {
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
-"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 50*1.0;\nTN    = 1/fN;\n\n% PV\n"
-"sun = 1; % sun strength. float between 0 and 1\npv_string = 22; % number of p"
-"v modules in string\nstrings = 1; % number of strings in parallel\npv_cap = 1"
-"e-6; % pv array output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % p"
-"v array initial input voltage in V\ntemperature = 25; % in deg. celsius. can "
-"be 0, 25, 50\n\n% MPPT\nm_init = 0.1;\nm_step = 0.01;\ni_C_avg_t = TN; % time"
-" to average |i_C|\nmppt_call = 2*i_C_avg_t; % mppt call interval\nEPS = 0.001"
-";\n\nsim_duration = 200 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\n% PV\nsun"
+" = 1; % sun strength. float between 0 and 1\npv_string = 22; % number of pv m"
+"odules in string\nstrings = 1; % number of strings in parallel\npv_cap = 1e-6"
+"; % pv array output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % pv a"
+"rray initial input voltage in V\ntemperature = 25; % in deg. celsius. can be "
+"0, 25, 50\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to"
+" average |i_C|\nmppt_call = 4*TN; % mppt call interval\nEPS = 0.001;\n\nsim_d"
+"uration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -61,11 +61,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [0, 25; 1915, 1035]
-    ZoomFactor    1.2436
+    Location      [1198, 25; 3750, 1554]
+    ZoomFactor    2.57592
     SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  157
+    BrowserWidth  69
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -1188,7 +1188,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 0; 345, 216]
+        Location      [1198, 25; 2472, 1554]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -1311,7 +1311,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 0; 642, 379]
+        Location      [1198, 25; 2472, 1554]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2048,328 +2048,6 @@ Plecs {
     }
     Component {
       Type          Subsystem
-      Name          "MPPT"
-      Show          on
-      Position      [235, 250]
-      Direction     up
-      Flipped       off
-      LabelPosition none
-      Frame         [-20, -20; 20, 20]
-      SampleTime    "-1"
-      CodeGenDiscretizationMethod "2"
-      CodeGenTarget "Generic"
-      MaskDisplayLang "2"
-      MaskIconFrame on
-      MaskIconOpaque off
-      MaskIconRotates on
-      Schematic {
-        Location      [1919, 25; 3194, 1555]
-        ZoomFactor    1
-        SliderPosition [0, 0]
-        ShowBrowser   off
-        BrowserWidth  100
-        Component {
-          Type          CScript
-          Name          "MPPT"
-          Show          on
-          Position      [265, 95]
-          Direction     up
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "DialogGeometry"
-            Value         "[1920 25 1276 1571]"
-            Show          off
-          }
-          Parameter {
-            Variable      "NumInputs"
-            Value         "4"
-            Show          off
-          }
-          Parameter {
-            Variable      "NumOutputs"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "NumContStates"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "NumDiscStates"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "NumZCSignals"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "DirectFeedthrough"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Ts"
-            Value         "mppt_call"
-            Show          off
-          }
-          Parameter {
-            Variable      "TerminalBasedSampleTimes"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Parameters"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "LangStandard"
-            Value         "2"
-            Show          off
-          }
-          Parameter {
-            Variable      "GnuExtensions"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "RuntimeCheck"
-            Value         "2"
-            Show          off
-          }
-          Parameter {
-            Variable      "HighlightLevel"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "Declarations"
-            Value         "#include <stdlib.h>\n"
-"#include <math.h>\n"
-"\n"
-"static float EPS = 0.1; // minimum delta\n"
-"float m = 0; // modulation degree\n"
-"float m_step = 0; // value by which m is increased or reduced\n"
-"float direction = 1; // -1 (down) or 1 (up)\n"
-"float i_C = 0; // capacitor current in A\n"
-"float i_C_pre = 0; // capacitor current of previous iteration"
-            Show          off
-          }
-          Parameter {
-            Variable      "StartFcn"
-            Value         "m_step = InputSignal(0,1);\n"
-"m = InputSignal(0,2); // set m to m_init\n"
-"EPS = InputSignal(0,3); // set EPS to EPS_init"
-            Show          off
-          }
-          Parameter {
-            Variable      "OutputFcn"
-            Value         "OutputSignal(0,0) = m;"
-            Show          off
-          }
-          Parameter {
-            Variable      "UpdateFcn"
-            Value         "/* adopt values */\n"
-"i_C_pre = i_C;\n"
-"\n"
-"/* read input */\n"
-"i_C = InputSignal(0,0);\n"
-"\n"
-"/* change direction if previous value was better */\n"
-"if (i_C_pre > i_C) direction *= -1; // change direction\n"
-"// else keep direction -> do nothing\n"
-"\n"
-"/* calculate new m */\n"
-"m += m_step * direction;\n"
-"\n"
-"/* restrict m */\n"
-"if (m < 0) m = 0.01;\n"
-"if (m > 1.5) m = 1.49;"
-            Show          off
-          }
-          Parameter {
-            Variable      "DerivativeFcn"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "TerminateFcn"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "StoreCustomStateFcn"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "RestoreCustomStateFcn"
-            Value         ""
-            Show          off
-          }
-        }
-        Component {
-          Type          SignalMux
-          Name          "Mux5"
-          Show          off
-          Position      [210, 95]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Width"
-            Value         "4"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "m_step"
-          Show          on
-          Position      [115, 90]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Frame         [-10, -10; 10, 10]
-          Parameter {
-            Variable      "Value"
-            Value         "m_step"
-            Show          off
-          }
-          Parameter {
-            Variable      "DataType"
-            Value         "10"
-            Show          off
-          }
-        }
-        Component {
-          Type          Goto
-          Name          "Goto15"
-          Show          off
-          Position      [320, 95]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Tag"
-            Value         "m"
-            Show          off
-          }
-          Parameter {
-            Variable      "Visibility"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "m_init"
-          Show          on
-          Position      [155, 100]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Frame         [-10, -10; 10, 10]
-          Parameter {
-            Variable      "Value"
-            Value         "m_init"
-            Show          off
-          }
-          Parameter {
-            Variable      "DataType"
-            Value         "10"
-            Show          off
-          }
-        }
-        Component {
-          Type          Constant
-          Name          "EPS"
-          Show          on
-          Position      [185, 110]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Frame         [-10, -10; 10, 10]
-          Parameter {
-            Variable      "Value"
-            Value         "EPS"
-            Show          off
-          }
-          Parameter {
-            Variable      "DataType"
-            Value         "10"
-            Show          off
-          }
-        }
-        Component {
-          Type          From
-          Name          "From"
-          Show          off
-          Position      [90, 80]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Tag"
-            Value         "P"
-            Show          off
-          }
-          Parameter {
-            Variable      "Visibility"
-            Value         "1"
-            Show          off
-          }
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "m_step"
-          SrcTerminal   1
-          DstComponent  "Mux5"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Mux5"
-          SrcTerminal   1
-          DstComponent  "MPPT"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "MPPT"
-          SrcTerminal   2
-          DstComponent  "Goto15"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "EPS"
-          SrcTerminal   1
-          DstComponent  "Mux5"
-          DstTerminal   5
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "m_init"
-          SrcTerminal   1
-          DstComponent  "Mux5"
-          DstTerminal   4
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "From"
-          SrcTerminal   1
-          DstComponent  "Mux5"
-          DstTerminal   2
-        }
-      }
-    }
-    Component {
-      Type          Subsystem
       Name          "power"
       Show          on
       Position      [85, 250]
@@ -2385,7 +2063,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [1919, 25; 3194, 1555]
+        Location      [1198, 25; 2472, 1554]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2616,7 +2294,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 0; 430, 178]
+        Location      [1198, 25; 2472, 1554]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2735,17 +2413,17 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 25; 955, 1057]
+      Location      [1198, 25; 2472, 1576]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAKkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA7wAAAPqAAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAABPwAAAXyAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAGQAAAACAAAAZAAAAAEAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAAJAA"
-"AAZAAAAAgAAABkAAAAsgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACiAAA"
+"wAAAGQAAAACAAAAZAAAAAkAAABkAAAACAAAAGQAAAAFAAAAZAAAAAQAAABkAAAABwAAAGQAAAAGAA"
+"AAZAAAAAEAAABkAAAAtwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACnAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AAQAAAAAQAAAAAAAAPoAAAAABA="
@@ -2924,6 +2602,331 @@ Plecs {
         Component     "PV string"
         Path          ""
         Signals       {"Voltage (V)", "Current (A)"}
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "MPPT"
+      Show          on
+      Position      [235, 250]
+      Direction     up
+      Flipped       off
+      LabelPosition none
+      Frame         [-20, -20; 20, 20]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Schematic {
+        Location      [1200, 27; 2474, 1556]
+        ZoomFactor    3.16049
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          CScript
+          Name          "MPPT"
+          Show          on
+          Position      [265, 95]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "DialogGeometry"
+            Value         "[1202 27 1276 1571]"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumInputs"
+            Value         "4"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "mppt_call"
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminalBasedSampleTimes"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "GnuExtensions"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "HighlightLevel"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "#include <stdlib.h>\n"
+"#include <math.h>\n"
+"\n"
+"static float EPS = 0.1; // minimum delta\n"
+"float m = 0; // modulation degree\n"
+"float m_step = 0; // value by which m is increased or reduced\n"
+"float direction = 1; // -1 (down) or 1 (up)\n"
+"float i_C = 0; // capacitor current in A\n"
+"float i_C_pre = 0; // capacitor current of previous iteration"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         "m_step = InputSignal(0,1);\n"
+"m = InputSignal(0,2); // set m to m_init\n"
+"EPS = InputSignal(0,3); // set EPS to EPS_init"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "/* adopt values */\n"
+"i_C_pre = i_C;\n"
+"\n"
+"/* read input */\n"
+"i_C = InputSignal(0,0);\n"
+"\n"
+"/* change direction if previous value was better */\n"
+"if (i_C_pre > i_C) direction *= -1; // change direction\n"
+"// else keep direction -> do nothing\n"
+"\n"
+"/* calculate new m */\n"
+"m += m_step * direction;\n"
+"\n"
+"/* restrict m */\n"
+"if (m < 0) m = 0.01;\n"
+"if (m > 1.5) m = 1.49;\n"
+"\n"
+"/* output m */\n"
+"OutputSignal(0,0) = m;"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "StoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "RestoreCustomStateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          SignalMux
+          Name          "Mux5"
+          Show          off
+          Position      [210, 95]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Width"
+            Value         "4"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "m_step"
+          Show          on
+          Position      [115, 90]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-10, -10; 10, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "m_step"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Goto
+          Name          "Goto15"
+          Show          off
+          Position      [320, 95]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Tag"
+            Value         "m"
+            Show          off
+          }
+          Parameter {
+            Variable      "Visibility"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "m_init"
+          Show          on
+          Position      [155, 100]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-10, -10; 10, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "m_init"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "EPS"
+          Show          on
+          Position      [185, 110]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-10, -10; 10, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "EPS"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          From
+          Name          "From"
+          Show          off
+          Position      [90, 80]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Tag"
+            Value         "i_C_abs_avg"
+            Show          off
+          }
+          Parameter {
+            Variable      "Visibility"
+            Value         "1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "m_step"
+          SrcTerminal   1
+          DstComponent  "Mux5"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Mux5"
+          SrcTerminal   1
+          DstComponent  "MPPT"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "MPPT"
+          SrcTerminal   2
+          DstComponent  "Goto15"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "EPS"
+          SrcTerminal   1
+          DstComponent  "Mux5"
+          DstTerminal   5
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "m_init"
+          SrcTerminal   1
+          DstComponent  "Mux5"
+          DstTerminal   4
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "From"
+          SrcTerminal   1
+          DstComponent  "Mux5"
+          DstTerminal   2
+        }
       }
     }
     Connection {
