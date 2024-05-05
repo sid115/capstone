@@ -1,9 +1,10 @@
 %%% VARIABLES %%%
 
-% Constants
-tN = 25; % nominal temperature in °C
+tn = 25; % nominal temperature in °C
 astc = 1000; % solar radiation at STC in W/m^2
 b = 1; % fit parameter
+vstep = 100; % number of voltage steps
+astep = 100; % number of radiation steps
 
 % PV module data
 voc = 86.4; % open circuit voltage in V
@@ -13,43 +14,38 @@ impp = 5.58; % current at maximum power point in A
 tci = 0; % temperature coefficient of Isc in 1/°C
 tcv = 0; % temperature coefficient of Voc in 1/°C
 
-% Open module voltages in two operation points
+% Open module voltages
 vmin = 0; % minimum open module voltage in V
 vmax = voc; % maximum open module voltage in V
 amin = 0; % minimum solar radiation in W/m^2
 amax = astc; % maximum solar radiation in W/m^2
 
 % Ranges
-a = linspace(amin, amax, 5); % solar radiations in W/m^2
-t = [tN]; % temperatures in °C
-v = linspace(vmin, vmax, 1); % voltages in V
+a = linspace(amin, amax, astep); % solar radiations in W/m^2
+t = [tn]; % temperatures in °C
+v = linspace(vmin, vmax, vstep); % voltages in V
 
 %%% FUNCTIONS %%%
 
-taui = @(_t) 1 + tci * (_t - tN); % % formula (1)
-tauv = @(_t) tcv * (_t - tN); % formula (2)
+taui = @(_t) 1 + tci * (_t - tn);
+tauv = @(_t) tcv * (_t - tn);
 
-function current = i(_a, _t, _v) % formula (3)
+function current = i(_a, _t, _v, b, astc, isc, tci, tn, tcv, vmax, vmin, amax, amin, taui, tauv)
     vdelta = vmax - vmin;
     adelta = amax - amin;
     exponent = _v / (b * (1 + vdelta / vmax * (_a - amax) / adelta) * (vmax + tauv(_t))) - 1 / b;
     current = _a / astc * isc * taui(_t) * (1 - exp(exponent)) / (1 - exp(-1 / b));
 end
 
-%%% COMPUTATION OF LOOKUP TABLE %%%
+%%% LOOKUP TABLE COMPUTATION %%%
 
-lookup_table = [];
-for _a = a
-    for _t = t
-        for _v = v
-            _i = i(_a, _t, _v); % compute current
-            _p = _v * _i; % compute power
-            lookup_table = [lookup_table; _a, _t, _v, _i, _p];
-        end
-    end
-end
+[A, T, V] = ndgrid(a, t, v);
+I = arrayfun(@(_a, _t, _v) i(_a, _t, _v, b, astc, isc, tci, tn, tcv, vmax, vmin, amax, amin, taui, tauv), A, T, V);
+P = V .* I;
 
-%%% DISPLAY AND SAVE LOOKUP TABLE %%%
-disp("Solar Radiation (a), Temperature (T), Voltage (V), Current (I), Power (P)");
-disp(lookup_table);
-csvwrite('pv_lut.csv', lookup_table);
+% Reshape the results into a 2-D matrix (lookup table)
+lut = [A(:), T(:), V(:), I(:), P(:)];
+
+%%% OUTPUT %%%
+
+csvwrite('../out/pv_lut.csv', lut); % this only works on UNIX systems
