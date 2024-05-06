@@ -10,4 +10,4 @@
         > This is probably related to the PV module model. Through simulation, I was able to rule out other parameters. -Sid
 
 # TODO
-- PV sim (lookup): adjust PV module parameters to match ours. This is just a random working simulation from the internet that was dependent on temperature and irradiance and had implemented a lookup table for the IV curve.
+- pv_lut.m: How do I import .mat files into Plecs? The pv base model just loads the included .mat file. The init code inside the PV system block seems to be matlab code, but I wonder how the lut is formatted so everything works. -Sid

@@ -29,15 +29,11 @@ Plecs {
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
-"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\n% PV\nsun"
-" = 1000; % sun strength in W/m2\npv_string = 1; % number of pv modules in str"
-"ing\nstrings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv array "
-"output capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv array initial "
-"input voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50\n\n"
-"% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i_C"
-"|\nmppt_call = 4*TN; % mppt call interval\n\n% ramping m\nm_min = 0;\nm_max ="
-" 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable = 1; % en"
-"able threshold\n\nsim_duration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+"10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\n% MPPT\nm"
+"_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i_C|\nmppt_c"
+"all = 4*TN; % mppt call interval\n\n% ramping m\nm_min = 0;\nm_max = 1.2;\nm_"
+"target = 0.39; % threshold when m_enable is true\nm_enable = 1; % enable thre"
+"shold\n\nsim_duration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -62,11 +58,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [1198, 25; 3750, 1554]
+    Location      [1198, 25; 2472, 1554]
     ZoomFactor    1.96699
     SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  69
+    BrowserWidth  157
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"

@@ -30,14 +30,14 @@ Plecs {
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
 "10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\n% PV\nsun"
-" = 1000; % sun strength in W/m2\npv_string = 1; % number of pv modules in str"
-"ing\nstrings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv array "
-"output capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv array initial "
-"input voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50\n\n"
-"% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i_C"
-"|\nmppt_call = 4*TN; % mppt call interval\n\n% ramping m\nm_min = 0;\nm_max ="
-" 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable = 1; % en"
-"able threshold\n\nsim_duration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+" = 1000; % irradiation in W/m2\npv_string = 1; % number of pv modules in stri"
+"ng\nn_strings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv array"
+" output capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv array initial"
+" input voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50\n"
+"\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i"
+"_C|\nmppt_call = 4*TN; % mppt call interval\n\n% ramping m\nm_min = 0;\nm_max"
+" = 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable = 1; % "
+"enable threshold\n\nsim_duration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -62,9 +62,9 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "48"
   Schematic {
-    Location      [0, 25; 1194, 1873]
-    ZoomFactor    0.966848
-    SliderPosition [0, 0]
+    Location      [1198, 25; 3750, 1554]
+    ZoomFactor    1.71884
+    SliderPosition [616, 0]
     ShowBrowser   on
     BrowserWidth  69
     Component {
@@ -521,16 +521,7 @@ Plecs {
         Variable      "llstrings"
         Prompt        "Number of strings in parallel"
         Type          FreeText
-        Value         "strings"
-        Show          off
-        Tunable       off
-        TabName       ""
-      }
-      Parameter {
-        Variable      "C"
-        Prompt        "Output capacitance (F)"
-        Type          FreeText
-        Value         "pv_cap"
+        Value         "n_strings"
         Show          off
         Tunable       off
         TabName       ""
@@ -540,15 +531,6 @@ Plecs {
         Prompt        "Initial output voltage (V)"
         Type          FreeText
         Value         "pv_init_vin"
-        Show          off
-        Tunable       off
-        TabName       ""
-      }
-      Parameter {
-        Variable      "T"
-        Prompt        "Temperature (C)"
-        Type          FreeText
-        Value         "temperature"
         Show          off
         Tunable       off
         TabName       ""
@@ -574,7 +556,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [1200, 27; 2474, 1556]
+        Location      [1198, 25; 2472, 1554]
         ZoomFactor    2.30729
         SliderPosition [0, 0]
         ShowBrowser   off
