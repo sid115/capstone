@@ -14,12 +14,10 @@ octave pv_lut.m
 
 A CSV file will be generated in the `out` directory. The file contains the lookup table for the panel.
 
+
 ## Todo
 
 - add calculation for b by comparing results with datasheet
-- currents get negative with higher voltages
-- Vmin, amin?
-- TC_I, TC_V?
 - adjust output to be compatible with non UNIX-like shells
 
 # PV IV curve
