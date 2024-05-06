@@ -30,13 +30,13 @@ Plecs {
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
 "10kHz\nRload = 8.8; \nfPWM  = 48e3;\nfN    = 500;\nTN    = 1/fN;\n\n% PV\nsun"
-" = 1; % sun strength. float between 0 and 1\npv_string = 22; % number of pv m"
-"odules in string\nstrings = 1; % number of strings in parallel\npv_cap = 1e-3"
-"; % pv array output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % pv a"
-"rray initial input voltage in V\ntemperature = 25; % in deg. celsius. can be "
-"0, 25, 50\n\ni_C_avg_t = TN; % time to average |i_C|\nm_min = 0;\nm_max = 1.2"
-";\nm_target = 0.39; % final value of m when using m'\nm_enable = 1; % 1 -> en"
-"able m' \n\nsim_duration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
+" = 1000; % sun strength in W/m2\npv_string = 1; % number of pv modules in str"
+"ing\nstrings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv array "
+"output capacitance in F (vanilla: 1e-6)\npv_init_vin = 1; % pv array initial "
+"input voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50\n\n"
+"i_C_avg_t = TN; % time to average |i_C|\nm_min = 0;\nm_max = 1.2;\nm_target ="
+" 0.39; % final value of m when using m'\nm_enable = 1; % 1 -> enable m' \n\ns"
+"im_duration = 1000 * TN;\n\ndeadtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -59,13 +59,13 @@ Plecs {
   AlgebraicLoopMethod "1"
   AlgebraicLoopTolerance "1e-6"
   ScriptsDialogGeometry "[3136 541 526 253]"
-  ScriptsDialogSplitterPos "87"
+  ScriptsDialogSplitterPos "48"
   Schematic {
-    Location      [1200, 27; 3752, 1556]
-    ZoomFactor    2.53001
+    Location      [0, 26; 1755, 946]
+    ZoomFactor    1.502
     SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  157
+    BrowserWidth  154
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -525,7 +525,7 @@ Plecs {
       MaskIconFrame on
       MaskIconOpaque on
       MaskIconRotates on
-      MaskInit      "load('Isurf_BP365.mat');"
+      MaskInit      "load('pv_lut.mat');"
       Parameter {
         Variable      "n"
         Prompt        "Number of PV modules in string"
@@ -586,9 +586,14 @@ Plecs {
         Position      [-10, 0]
         Direction     left
       }
+      Terminal {
+        Type          Input
+        Position      [-10, -10]
+        Direction     left
+      }
       Schematic {
-        Location      [2, 27; 1277, 1557]
-        ZoomFactor    4.21399
+        Location      [458, 193; 1478, 746]
+        ZoomFactor    2.30729
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -700,7 +705,7 @@ Plecs {
           Type          Input
           Name          "Sun"
           Show          on
-          Position      [50, 150]
+          Position      [65, 115]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -740,22 +745,22 @@ Plecs {
           LabelPosition south
           Parameter {
             Variable      "x"
-            Value         "[0:0.05:25]"
+            Value         "[0:200:1000]"
             Show          off
           }
           Parameter {
             Variable      "y"
-            Value         "[0:0.1:1]"
+            Value         "[0:-25:75]"
             Show          off
           }
           Parameter {
             Variable      "z"
-            Value         "[0:25:50]"
+            Value         "[0:0:86.4]"
             Show          off
           }
           Parameter {
             Variable      "f(x,y,z)"
-            Value         "Isurf_BP365*llstrings"
+            Value         "pv_lut"
             Show          off
           }
           Parameter {
@@ -765,22 +770,21 @@ Plecs {
           }
         }
         Component {
-          Type          Constant
-          Name          "Temperature"
+          Type          Input
+          Name          "T"
           Show          on
-          Position      [50, 195]
+          Position      [65, 150]
           Direction     right
           Flipped       off
           LabelPosition south
-          Frame         [-10, -10; 10, 10]
           Parameter {
-            Variable      "Value"
-            Value         "T"
-            Show          off
+            Variable      "Index"
+            Value         "4"
+            Show          on
           }
           Parameter {
-            Variable      "DataType"
-            Value         "10"
+            Variable      "Width"
+            Value         "-1"
             Show          off
           }
         }
@@ -851,32 +855,9 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "1/num_panels"
-          SrcTerminal   2
-          Points        [90, 55; 90, 140]
-          DstComponent  "3D-Table"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Sun"
-          SrcTerminal   1
-          DstComponent  "3D-Table"
-          DstTerminal   2
-        }
-        Connection {
-          Type          Signal
           SrcComponent  "3D-Table"
           SrcTerminal   4
           DstComponent  "I1"
-          DstTerminal   3
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Temperature"
-          SrcTerminal   1
-          Points        [90, 195; 90, 160]
-          DstComponent  "3D-Table"
           DstTerminal   3
         }
         Connection {
@@ -891,6 +872,29 @@ Plecs {
           Branch {
             Points        [335, 140]
           }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "1/num_panels"
+          SrcTerminal   2
+          Points        [15, 55; 15, 200; 110, 200; 110, 160]
+          DstComponent  "3D-Table"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sun"
+          SrcTerminal   1
+          Points        [100, 115; 100, 140]
+          DstComponent  "3D-Table"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "T"
+          SrcTerminal   1
+          DstComponent  "3D-Table"
+          DstTerminal   2
         }
       }
       MaskProbe {
@@ -922,7 +926,7 @@ Plecs {
       Type          Constant
       Name          "Sun"
       Show          on
-      Position      [45, 100]
+      Position      [40, 110]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1121,11 +1125,11 @@ Plecs {
       Type          Subsystem
       Name          "i_C_abs_avg"
       Show          on
-      Position      [200, 245]
+      Position      [225, 245]
       Direction     up
       Flipped       off
       LabelPosition none
-      Frame         [-20, -20; 20, 20]
+      Frame         [-45, -20; 45, 20]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -2837,6 +2841,26 @@ Plecs {
         Show          off
       }
     }
+    Component {
+      Type          Constant
+      Name          "Temp"
+      Show          on
+      Position      [40, 70]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-10, -10; 10, 10]
+      Parameter {
+        Variable      "Value"
+        Value         "temperature"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "T2D2"
@@ -3075,6 +3099,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Sun"
       SrcTerminal   1
+      Points        [90, 110]
       DstComponent  "PV string"
       DstTerminal   3
     }
@@ -3171,6 +3196,14 @@ Plecs {
       SrcTerminal   1
       DstComponent  "Scope"
       DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Temp"
+      SrcTerminal   1
+      Points        [75, 70; 75, 90]
+      DstComponent  "PV string"
+      DstTerminal   4
     }
     Annotation {
       Name          "<html><body>\n<p>min 120V MOSFETs</p></body></html>"
