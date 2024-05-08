@@ -4,8 +4,8 @@ tn = 25; % nominal temperature in °C
 astc = 1000; % solar radiation at STC in W/m^2
 b = 0.09; % fit parameter
 vstep = 100; % number of voltage steps
-astep = 100; % number of radiation steps
-tstep = 100;
+astep = 9; % number of radiation steps
+tstep = 3;
 
 % PV module data
 voc = 86.4; % open circuit voltage in V
@@ -20,8 +20,8 @@ vmin = 77.76; % minimum open module voltage in V - estimated Value: 90% * Vmax
 vmax = voc; % maximum open module voltage in V
 amin = 200; % minimum solar radiation in W/m^2  - 200W/m² as recommanded in the Boeke Paper
 amax = astc; % maximum solar radiation in W/m^2
-tmin = -25;
-tmax = 75;
+tmin = 0;
+tmax = 50;
 
 % Ranges
 a = linspace(amin, amax, astep); % solar radiations in W/m^2
@@ -42,15 +42,12 @@ end
 
 %%% LOOKUP TABLE COMPUTATION %%%
 
+lut = zeros(length(a), length(t), length(v));
+
 [A, T, V] = ndgrid(a, t, v);
-I = arrayfun(@(_a, _t, _v) i(_a, _t, _v, b, astc, isc, tci, tn, tcv, vmax, vmin, amax, amin, taui, tauv), A, T, V);
-%P = V .* I;
+lut = arrayfun(@(_a, _t, _v) i(_a, _t, _v, b, astc, isc, tci, tn, tcv, vmax, vmin, amax, amin, taui, tauv), A, T, V);
 
-
-% Reshape the results into a 2-D matrix (lookup table)
-#lut = [A(:), T(:), V(:), I(:), P(:)];
-lut = [A(:), T(:), V(:),I(:)]
 
 %%% OUTPUT %%%
 save('-V7', "../out/pv_lut.mat",'lut'); % V7 to ensure compatibility with plecs
-%csvwrite('../out/pv_lut.csv', lut); % this only works on UNIX systems
+
