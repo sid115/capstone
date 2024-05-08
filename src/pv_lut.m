@@ -3,9 +3,9 @@
 tn = 25; % nominal temperature in °C
 astc = 1000; % solar radiation at STC in W/m^2
 b = 0.09; % fit parameter
-vstep = 100; % number of voltage steps
-astep = 9; % number of radiation steps
-tstep = 3;
+vstep = 101; % number of voltage steps
+astep = 11; % number of radiation steps
+tstep = 21;
 
 % PV module data
 voc = 86.4; % open circuit voltage in V
@@ -20,11 +20,11 @@ vmin = 77.76; % minimum open module voltage in V - estimated Value: 90% * Vmax
 vmax = voc; % maximum open module voltage in V
 amin = 200; % minimum solar radiation in W/m^2  - 200W/m² as recommanded in the Boeke Paper
 amax = astc; % maximum solar radiation in W/m^2
-tmin = 0;
-tmax = 50;
+tmin = -25;
+tmax = 75;
 
 % Ranges
-a = linspace(amin, amax, astep); % solar radiations in W/m^2
+a = linspace(0, amax, astep); % solar radiations in W/m^2
 t = linspace(tmin,tmax,tstep); % temperatures in °C
 v = linspace(0, vmax, vstep); % voltages in V
 
@@ -47,7 +47,8 @@ lut = zeros(length(a), length(t), length(v));
 [A, T, V] = ndgrid(a, t, v);
 lut = arrayfun(@(_a, _t, _v) i(_a, _t, _v, b, astc, isc, tci, tn, tcv, vmax, vmin, amax, amin, taui, tauv), A, T, V);
 
+lut(lut < 0) = 0;   % set all negative Values to zero
+
 
 %%% OUTPUT %%%
 save('-V7', "../out/pv_lut.mat",'lut'); % V7 to ensure compatibility with plecs
-
