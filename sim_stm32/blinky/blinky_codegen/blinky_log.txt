@@ -1,0 +1,85 @@
+- 08 (timer): Offered trigger generator at 1.000000 Hz
+New best fit for default triggering block: bid=8, Ts=1.000000e+00, Ferror=0.000000e+00
+- 09 (tasktrigger): Task trigger sample time for tasktrigger (9) propagated to: 1.000000.
+- 02 (clock): Flash latency: 4.
+- 05 (extmode): External mode disabled.
+
+Block coding complete.
+
+Blocks in model: {
+  ["dout"] = {
+    [1] = {
+      ["port"] = "A",
+      ["pins"] = {
+        [0] = 5.0,
+      },
+      ["outputType"] = "OPENDRAIN",
+    },
+  },
+  ["tasktrigger"] = {
+    [1] = {
+      ["trig_exp"] = "{modtrig={bid=8}}",
+      ["trig_base_task_exp"] = "{modtrig = {bid = 8}}",
+      ["ts"] = 1.0,
+    },
+  },
+  ["syscfg"] = {
+    [1] = {
+    },
+  },
+  ["analog_fault_line"] = {
+    [1] = {
+      ["available_comps_for_target"] = {
+        [1] = "COMP 1",
+        [2] = "COMP 2",
+        [3] = "COMP 3",
+        [4] = "COMP 4",
+        [5] = "COMP 5",
+        [6] = "COMP 6",
+        [7] = "COMP 7",
+      },
+      ["analog_flt_signals"] = {
+      },
+      ["available_dacs_for_target"] = {
+        [1] = "DAC 1.1",
+        [2] = "DAC 1.2",
+        [3] = "DAC 3.1",
+        [4] = "DAC 3.2",
+        [5] = "DAC 2.1",
+        [6] = "DAC 4.1",
+        [7] = "DAC 4.2",
+      },
+    },
+  },
+  ["pinmap"] = {
+    [1] = {
+    },
+  },
+  ["clock"] = {
+    [1] = {
+    },
+  },
+  ["extmode"] = {
+    [1] = {
+      ["extMode"] = "off",
+    },
+  },
+  ["timer"] = {
+    [1] = {
+      ["unit"] = 3,
+      ["prescale"] = 2720,
+      ["frequency"] = 1.0,
+      ["modtrig"] = {
+        [1] = <cyclic reference>,
+      },
+      ["period"] = 62500,
+    },
+  },
+  [""] = {
+    [1] = {
+    },
+  },
+}
+
+
+Target settings: "Target: 000001AB4168C9D8"

@@ -1,0 +1,343 @@
+Plecs {
+  Name          "blinky"
+  Version       "4.8"
+  CircuitModel  "DiscStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "10"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "3"
+  DatatypeInheritanceConflictMsg "2"
+  ContSampleTimeConflictMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "1"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "STM32G4x"
+  CodeGenTargetSettings "AAAAfwAAAAAlUU1hcDxRU3RyaW5nLFFNYXA8UVN0cmluZyxRU3Rya"
+"W5nPiA+AAAAAAEAAAAQAFMAVABNADMAMgBHADQAeAAAAFYAAAASAFUAcwBlAEkAbgB0AE8AcwBjAA"
+"AAAgAxAAAANABVAFMARQBfAFMAVABBAFIAVABfAFQASQBNAEUAXwBJAE4AXwBJAE4ASQBUAF8ARgB"
+"DAE4AAAACADAAAABKAFUAUwBFAF8ARABBAFQAQQBfAFQAWQBQAEUAUwBfAEYATwBSAF8AVABVAE4A"
+"QQBCAEwARQBfAFAAQQBSAEEATQBFAFQARQBSAFMAAAACADEAAAAUAFQAaAByAGUAcwBoAG8AbABkA"
+"DcAAAAGADAALgAwAAAAFABUAGgAcgBlAHMAaABvAGwAZAA2AAAABgAwAC4AMAAAABQAVABoAHIAZQ"
+"BzAGgAbwBsAGQANQAAAAYAMAAuADAAAAAUAFQAaAByAGUAcwBoAG8AbABkADQAAAAGADAALgAwAAA"
+"AFABUAGgAcgBlAHMAaABvAGwAZAAzAAAABgAwAC4AMAAAABQAVABoAHIAZQBzAGgAbwBsAGQAMgAA"
+"AAYAMAAuADAAAAAUAFQAaAByAGUAcwBoAG8AbABkADEAAAAGADAALgAwAAAAGgBUAGEAcwBrAFMAY"
+"wBoAGUAZAB1AGwAZQByAAAAAgAyAAAAFgBUAGEAcwBrAEYAcgBlAHEAVABvAGwAAAACADEAAAAUAF"
+"QAYQByAGcAZQB0AE4AYQBtAGUAAAAQAFMAVABNADMAMgBHADQAeAAAABoAVABBAFIARwBFAFQAXwB"
+"EAEUAVgBJAEMARf////8AAAASAFMAeQBzAEMAbABrAE0ASAB6AAAABgAxADcAMAAAACYAUwBwAGUA"
+"YwBpAGYAeQBTAGUAcgBpAGEAbABOAHUAbQBiAGUAcgAAAAIAMAAAACQAUwBlAHIAaQBhAGwATgB1A"
+"G0AYgBlAHIAUwB0AHIAaQBuAGcAAAAAAAAAGABTAGUAcgBpAGEAbABOAHUAbQBiAGUAcgAAAAAAAA"
+"AUAFMAZQBuAHMAZQBQAG8AcgB0ADcAAAACADEAAAAUAFMAZQBuAHMAZQBQAG8AcgB0ADYAAAACADE"
+"AAAAUAFMAZQBuAHMAZQBQAG8AcgB0ADUAAAACADEAAAAUAFMAZQBuAHMAZQBQAG8AcgB0ADQAAAAC"
+"ADEAAAAUAFMAZQBuAHMAZQBQAG8AcgB0ADMAAAACADEAAAAUAFMAZQBuAHMAZQBQAG8AcgB0ADIAA"
+"AACADEAAAAUAFMAZQBuAHMAZQBQAG8AcgB0ADEAAAACADEAAAASAFMAZQBuAHMAZQBQAGkAbgA3AA"
+"AAAgAwAAAAEgBTAGUAbgBzAGUAUABpAG4ANgAAAAIAMAAAABIAUwBlAG4AcwBlAFAAaQBuADUAAAA"
+"CADAAAAASAFMAZQBuAHMAZQBQAGkAbgA0AAAAAgAwAAAAEgBTAGUAbgBzAGUAUABpAG4AMwAAAAIA"
+"MAAAABIAUwBlAG4AcwBlAFAAaQBuADIAAAACADAAAAASAFMAZQBuAHMAZQBQAGkAbgAxAAAAAgAwA"
+"AAAIABTAGEAbQBwAGwAZQBUAGkAbQBlAFIAZQBsAFQAbwBsAAAABAAxADAAAAAMAFAAcgBvAGcASQ"
+"BmAAAAAgAxAAAAEgBQAG8AbABhAHIAaQB0AHkANwAAAAIAMgAAABIAUABvAGwAYQByAGkAdAB5ADY"
+"AAAACADIAAAASAFAAbwBsAGEAcgBpAHQAeQA1AAAAAgAyAAAAEgBQAG8AbABhAHIAaQB0AHkANAAA"
+"AAIAMgAAABIAUABvAGwAYQByAGkAdAB5ADMAAAACADIAAAASAFAAbwBsAGEAcgBpAHQAeQAyAAAAA"
+"gAyAAAAEgBQAG8AbABhAHIAaQB0AHkAMQAAAAIAMgAAABwATgBlAGUAZABzAEEAdQB0AG8AcAByAG"
+"8AYgBlAAAAAgAwAAAAFABJAG4AcwB0AGEAbABsAEQAaQByAAAAiABDADoALwBDAGEAcABzAHQAbwB"
+"uAGUALwBjAGEAcABzAHQAbwBuAGUALwBzAGkAbQBfAHMAdABtADMAMgAvAHcAbwByAGsAcwBwAGEA"
+"YwBlAF8AQwB1AGIAZQBJAEQARQAvAGIAbABpAG4AawB5AC8AYwB1AGIAZQBfAGcANAA3ADQALwBjA"
+"GcAAAAcAEcAZQBuAGUAcgBhAHQAZQBQAGkAbgBNAGEAcAAAAAIAMQAAACIARQB4AHQATQBvAGQAZQ"
+"BVAGEAcgB0AFQAeABQAG8AcgB0AAAAAgAxAAAAIABFAHgAdABNAG8AZABlAFUAYQByAHQAVAB4AFA"
+"AaQBuAAAAAgAyAAAAIgBFAHgAdABNAG8AZABlAFUAYQByAHQAUgB4AFAAbwByAHQAAAACADEAAAAg"
+"AEUAeAB0AE0AbwBkAGUAVQBhAHIAdABSAHgAUABpAG4AAAACADMAAAAiAEUAeAB0AE0AbwBkAGUAQ"
+"gB1AGYAZgBlAHIAUwBpAHoAZQAAAAgAMQAwADAAMAAAABIARQB4AHQAQwBsAGsATQBIAHoAAAACAD"
+"gAAAAaAEUAWABUAEUAUgBOAEEATABfAE0ATwBEAEUAAAACADAAAAAOAEQAZQBiAHUAZwBJAGYAAAA"
+"CADEAAAAYAEMAbwBtAHAATwB1AHQAUABvAHIAdAA3AAAAAgAxAAAAGABDAG8AbQBwAE8AdQB0AFAA"
+"bwByAHQANgAAAAIAMQAAABgAQwBvAG0AcABPAHUAdABQAG8AcgB0ADUAAAACADEAAAAYAEMAbwBtA"
+"HAATwB1AHQAUABvAHIAdAA0AAAAAgAxAAAAGABDAG8AbQBwAE8AdQB0AFAAbwByAHQAMwAAAAIAMQ"
+"AAABgAQwBvAG0AcABPAHUAdABQAG8AcgB0ADIAAAACADEAAAAYAEMAbwBtAHAATwB1AHQAUABvAHI"
+"AdAAxAAAAAgAxAAAAFgBDAG8AbQBwAE8AdQB0AFAAaQBuADcAAAACADAAAAAWAEMAbwBtAHAATwB1"
+"AHQAUABpAG4ANgAAAAIAMAAAABYAQwBvAG0AcABPAHUAdABQAGkAbgA1AAAAAgAwAAAAFgBDAG8Ab"
+"QBwAE8AdQB0AFAAaQBuADQAAAACADAAAAAWAEMAbwBtAHAATwB1AHQAUABpAG4AMwAAAAIAMAAAAB"
+"YAQwBvAG0AcABPAHUAdABQAGkAbgAyAAAAAgAwAAAAFgBDAG8AbQBwAE8AdQB0AFAAaQBuADEAAAA"
+"CADAAAAAQAEMAbwBtAHAATwB1AHQANwAAAAIAMQAAABAAQwBvAG0AcABPAHUAdAA2AAAAAgAxAAAA"
+"EABDAG8AbQBwAE8AdQB0ADUAAAACADEAAAAQAEMAbwBtAHAATwB1AHQANAAAAAIAMQAAABAAQwBvA"
+"G0AcABPAHUAdAAzAAAAAgAxAAAAEABDAG8AbQBwAE8AdQB0ADIAAAACADEAAAAQAEMAbwBtAHAATw"
+"B1AHQAMQAAAAIAMQAAACQAQwBoAGkAcABWAGEAcgBpAGEAbgB0AHMARwA0ADcANAB4AHgAAAACADE"
+"AAAAkAEMAaABpAHAAVgBhAHIAaQBhAG4AdABzAEcANAAzADEAeAB4AAAAAgAxAAAACABDAGgAaQBw"
+"AAAAAgAyAAAAEgBCAHUAaQBsAGQAVAB5AHAAZQAAAAIAMgAAAB4AQQB1AHQAbwBwAHIAbwBiAGUAR"
+"ABlAHYAaQBjAGUAAAACADAAAAAaAEEAbgBhAGwAbwBnAEYAbAB0AFMAaQBnADcAAAACADAAAAAaAE"
+"EAbgBhAGwAbwBnAEYAbAB0AFMAaQBnADYAAAACADAAAAAaAEEAbgBhAGwAbwBnAEYAbAB0AFMAaQB"
+"nADUAAAACADAAAAAaAEEAbgBhAGwAbwBnAEYAbAB0AFMAaQBnADQAAAACADAAAAAaAEEAbgBhAGwA"
+"bwBnAEYAbAB0AFMAaQBnADMAAAACADAAAAAaAEEAbgBhAGwAbwBnAEYAbAB0AFMAaQBnADIAAAACA"
+"DAAAAAaAEEAbgBhAGwAbwBnAEYAbAB0AFMAaQBnADEAAAACADAAAAAOAEEAZABjAFYAUgBlAGYAAA"
+"AGADMALgAz"
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Terminal {
+    Type          Output
+    Index         "1"
+  }
+  Schematic {
+    Location      [0, 26; 1707, 924]
+    ZoomFactor    1.49863
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          Reference
+      SrcComponent  "STM32_Lib/Control Task\\nTrigger"
+      Name          "Control Task\nTrigger"
+      Show          on
+      Position      [465, 360]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "STM32_Lib/Digital Out"
+      Name          "Digital Out"
+      Show          on
+      Position      [690, 330]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-25, -20; 25, 20]
+      Parameter {
+        Variable      "Port"
+        Value         "1"
+        Show          on
+      }
+      Parameter {
+        Variable      "Pin"
+        Value         "[5]"
+        Show          on
+      }
+      Parameter {
+        Variable      "OutputType"
+        Value         "2"
+        Show          on
+      }
+      Parameter {
+        Variable      "TargetPortIndices"
+        Value         "1"
+        Show          off
+      }
+      Terminal {
+        Type          Input
+        Position      [-25, 0]
+        Direction     left
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "STM32_Lib/Timer"
+      Name          "Timer"
+      Show          on
+      Position      [375, 345]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-25, -25; 25, 25]
+      Parameter {
+        Variable      "Freq"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "FreqTol"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "TargetPortIndices"
+        Value         ""
+        Show          off
+      }
+      Terminal {
+        Type          EventOutput
+        Position      [29, 15]
+        Direction     right
+      }
+      Terminal {
+        Type          EventOutput
+        Position      [29, -15]
+        Direction     right
+      }
+    }
+    Component {
+      Type          Delay
+      Name          "Delay"
+      Show          on
+      Position      [560, 330]
+      Direction     left
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "N"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "X0"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ts"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          LogicalOperator
+      Name          "Logical\nOperator"
+      Show          on
+      Position      [560, 375]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Operator"
+        Value         "6"
+        Show          off
+      }
+      Parameter {
+        Variable      "Inputs"
+        Value         "2"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope"
+      Show          on
+      Position      [690, 265]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [640, 320; 1297, 707]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAEwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABxAP///wAAA9oAAAIiAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAJYAAAACAAAAlgAAAAMAAACWAAAABAAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAA"
+"AAlgAAAAkAAACWAAABAAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAADLAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AA1AAAAAQAAAAAAAAPoAAAAADU="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      Axes          "1"
+      TimeRange     "0.0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "1"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Connection {
+      Type          Event
+      SrcComponent  "Timer"
+      SrcTerminal   1
+      DstComponent  "Control Task\nTrigger"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Delay"
+      SrcTerminal   2
+      Points        [530, 330]
+      DstComponent  "Logical\nOperator"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Logical\nOperator"
+      SrcTerminal   1
+      Points        [605, 375; 605, 330]
+      Branch {
+        DstComponent  "Delay"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [635, 330]
+        Branch {
+          DstComponent  "Digital Out"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [635, 265]
+          DstComponent  "Scope"
+          DstTerminal   1
+        }
+      }
+    }
+  }
+}
