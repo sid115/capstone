@@ -59,11 +59,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [1200, 27; 3752, 1556]
+    Location      [1198, 25; 3750, 1554]
     ZoomFactor    2.67024
-    SliderPosition [-1, 0]
+    SliderPosition [662, 0]
     ShowBrowser   on
-    BrowserWidth  69
+    BrowserWidth  157
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -1402,8 +1402,8 @@ Plecs {
     }
     Component {
       Type          ModelReference
-      SrcComponent  "pwm/PWM"
-      SrcModel      "include/pwm.plecs"
+      SrcComponent  "_pwm/PWM"
+      SrcModel      "_pwm.plecs"
       Name          "PWM"
       Show          on
       Position      [435, 390]
@@ -1429,8 +1429,8 @@ Plecs {
     }
     Component {
       Type          ModelReference
-      SrcComponent  "mppt/MPPT"
-      SrcModel      "include/mppt.plecs"
+      SrcComponent  "_mppt/MPPT"
+      SrcModel      "_mppt.plecs"
       Name          "MPPT"
       Show          on
       Position      [235, 345]

@@ -65,9 +65,9 @@ Plecs {
   Schematic {
     Location      [1198, 25; 3750, 1554]
     ZoomFactor    2.4627
-    SliderPosition [153, 0]
+    SliderPosition [140, 339]
     ShowBrowser   on
-    BrowserWidth  69
+    BrowserWidth  157
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -1599,8 +1599,8 @@ Plecs {
     }
     Component {
       Type          ModelReference
-      SrcComponent  "pwm/PWM"
-      SrcModel      "include/pwm.plecs"
+      SrcComponent  "_pwm/PWM"
+      SrcModel      "_pwm.plecs"
       Name          "PWM"
       Show          on
       Position      [420, 350]
@@ -1626,8 +1626,8 @@ Plecs {
     }
     Component {
       Type          ModelReference
-      SrcComponent  "mppt/MPPT"
-      SrcModel      "include/mppt.plecs"
+      SrcComponent  "_mppt/MPPT"
+      SrcModel      "_mppt.plecs"
       Name          "MPPT"
       Show          on
       Position      [220, 305]
