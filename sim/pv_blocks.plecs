@@ -59,11 +59,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [1200, 27; 3752, 1556]
-    ZoomFactor    2.00268
+    Location      [1920, -789; 3840, 200]
+    ZoomFactor    1.16775
     SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  69
+    BrowserWidth  253
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -801,7 +801,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [1198, 25; 2472, 1554]
+        Location      [2175, -530; 3449, 998]
         ZoomFactor    2.37037
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -1503,7 +1503,7 @@ Plecs {
       Type          From
       Name          "From3"
       Show          off
-      Position      [105, 335]
+      Position      [120, 320]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1756,20 +1756,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [1198, 25; 2472, 1576]
+      Location      [1920, -789; 3840, 218]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAABPwAAAXyAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAACWAAAATMAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"wAAAGQAAAAEAAAAZAAAAAUAAABkAAAACAAAAGQAAAAJAAAAZAAAAAIAAABkAAAAAwAAAGQAAAABAA"
-"AAZAAAAAYAAABkAAAAuQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACpAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"gAAAGQAAAABAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAACQAAAGQAAAAIAA"
+"AAZAAAAAMAAABkAAAA1AAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAACpAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAQAAAAAQAAAAAAAAPoAAAAABA="
+"AArAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
@@ -1779,7 +1779,7 @@ Plecs {
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
-      ShowLegend    "1"
+      ShowLegend    "2"
       Axis {
         Name          ""
         AutoScale     1
@@ -2288,6 +2288,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From3"
       SrcTerminal   1
+      Points        [160, 320; 160, 335]
       DstComponent  "MPPT"
       DstTerminal   4
     }
