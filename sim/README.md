@@ -1,3 +1,3 @@
 # Questions
 
-- R_PV is now needed to solve differential equations inside both sims. How can we avoid this resistance? Maybe use a voltage source as Dick suggested? -Sid
+- pv_lut.plecs: How do we feed the intitial current from the lut to L_PV? The system is undefined without it.
