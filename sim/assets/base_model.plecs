@@ -59,7 +59,7 @@ Plecs {
     ZoomFactor    1.44895
     SliderPosition [0, -1]
     ShowBrowser   on
-    BrowserWidth  157
+    BrowserWidth  69
     Component {
       Type          DCVoltageSource
       Name          "U_dc"
