@@ -12,8 +12,8 @@ voc = 86.4; % open circuit voltage in V
 isc = 6.14; % short circuit current in A
 vmpp = 70.4; % voltage at maximum power point in V
 impp = 5.58; % current at maximum power point in A
-tci = 0.05; % temperature coefficient of Isc in 1/°C - Estimated Values from: https://www.eco-greenenergy.com/temperature-coefficient-of-solar-pv-module/
-tcv = -0.3; % temperature coefficient of Voc in 1/°C - Estimated Values from: https://www.eco-greenenergy.com/temperature-coefficient-of-solar-pv-module/
+tci = 0.081; % temperature coefficient of Isc in 1/°C
+tcv = -0.37; % temperature coefficient of Voc in 1/°C
 
 % Open module voltages
 vmin = 77.76; % minimum open module voltage in V - estimated Value: 90% * Vmax
