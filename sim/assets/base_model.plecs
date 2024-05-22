@@ -55,11 +55,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "87"
   Schematic {
-    Location      [2556, 27; 5106, 1036]
+    Location      [0, 23; 1536, 795]
     ZoomFactor    1.44895
-    SliderPosition [0, -1]
+    SliderPosition [425, -1]
     ShowBrowser   on
-    BrowserWidth  69
+    BrowserWidth  134
     Component {
       Type          DCVoltageSource
       Name          "U_dc"
@@ -220,7 +220,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "Tag"
-        Value         "High_Low_11"
+        Value         "High_Low_1"
         Show          off
       }
       Parameter {
@@ -272,7 +272,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "Tag"
-        Value         "High_Low_22"
+        Value         "High_Low_2"
         Show          off
       }
       Parameter {
@@ -2379,6 +2379,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "High_Low_1"
@@ -2398,6 +2399,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "High_Low_2"
@@ -2417,6 +2419,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "High_Low_11"
@@ -2436,6 +2439,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "High_Low_22"
@@ -2455,6 +2459,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Criteria"
         Value         "2"
@@ -2474,6 +2479,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Criteria"
         Value         "2"
@@ -2493,6 +2499,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Frame         [-10, -10; 10, 10]
       Parameter {
         Variable      "Value"
@@ -2513,6 +2520,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Frame         [-10, -10; 10, 10]
       Parameter {
         Variable      "Value"
@@ -2533,6 +2541,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "i_LC"
@@ -2552,6 +2561,7 @@ Plecs {
       Direction     right
       Flipped       off
       LabelPosition south
+      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "Tag"
         Value         "i_LC"
