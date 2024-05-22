@@ -30,7 +30,7 @@ v = linspace(0, vmax, vstep); % voltages in V
 
 %%% FUNCTIONS %%%
 
-taui = @(_t) 1 + tci * (_t - tn);
+taui = @(_t) 1 + tci/100 * (_t - tn);
 tauv = @(_t) tcv * (_t - tn);
 
 function current = i(_a, _t, _v, b, astc, isc, tci, tn, tcv, vmax, vmin, amax, amin, taui, tauv)
