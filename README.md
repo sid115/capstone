@@ -27,6 +27,10 @@ Essential data of the PV generator with 4 modules in series, all at STC:
 1. Research for a platform / concept for Auxiliaury Power
     - H-bridge, which can be easily connected to sensors and STM
 
+## Todo
+
+- [ ] move steps to project board
+
 ## PLECS
 
 1. Install [PLECS Standalone](https://www.plexim.com/download/standalone).
