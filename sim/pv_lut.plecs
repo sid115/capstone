@@ -34,14 +34,15 @@ Plecs {
 "odules in string\nn_strings = 1; % number of strings in parallel\npv_cap = 1e"
 "-3; % pv array output capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv"
 " array initial input voltage in V\ntemperature = 25; % in deg. celsius. can b"
-"e 0, 25, 50\nL_PV = 0; % do not change\nP_MPP = 400; % W\nC1 = 100e-6;\n\n% A"
-"ltering Load\nI_Cf_min = 0; % min cap current in A\nR_SC = 10e-6; % short cir"
-"cuit resistance\nstep_time = 1; % time in s until new_load_state\nnew_load_st"
-"ate = 1; % 0: do nothing; 1: SC; -1: OC\ni_CL_max=10%for OCprotection1\n\n% M"
-"PPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average |i_C|\n"
-"mppt_call = 4*TN; % mppt call interval\n\n% ramping m\nm_min = 0;\nm_max = 1."
-"2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable = 1; % enabl"
-"e threshold\n\nsim_duration = 1000 * TN;\ndeadtime = 20e-9;  % 200ns"
+"e 0, 25, 50\nl_wire = 20 %Lenght of the wire in m connecting PV Module\nP_MPP"
+" = 400; % W\nC1 = 100e-6;\n\n% Altering Load\nI_Cf_min = 0; % min cap current"
+" in A\nR_SC = 10e-6; % short circuit resistance\nstep_time = 1; % time in s u"
+"ntil new_load_state\nnew_load_state = 1; % 0: do nothing; 1: SC; -1: OC\ni_CL"
+"_max=10%for OCprotection1\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t"
+" = TN; % time to average |i_C|\nmppt_call = 4*TN; % mppt call interval\n\n% r"
+"amping m\nm_min = 0;\nm_max = 1.2;\nm_target = 0.39; % threshold when m_enabl"
+"e is true\nm_enable = 1; % enable threshold\n\nsim_duration = 1000 * TN;\ndea"
+"dtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -66,11 +67,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "48"
   Schematic {
-    Location      [0, 25; 2552, 1554]
-    ZoomFactor    1.78178
-    SliderPosition [0, 0]
+    Location      [0, 26; 1755, 946]
+    ZoomFactor    1.33634
+    SliderPosition [-1, 0]
     ShowBrowser   on
-    BrowserWidth  157
+    BrowserWidth  156
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -427,10 +428,10 @@ Plecs {
         TabName       ""
       }
       Parameter {
-        Variable      "L_PV"
-        Prompt        "Inductance (H)"
+        Variable      "l_wire"
+        Prompt        "Wire Length"
         Type          FreeText
-        Value         "L_PV"
+        Value         "l_wire"
         Show          off
         Tunable       off
         TabName       ""
@@ -474,7 +475,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [2554, 25; 3827, 1034]
+        Location      [365, 1045; 1638, 1934]
         ZoomFactor    2.30729
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -549,7 +550,7 @@ Plecs {
           Type          Port
           Name          "+"
           Show          on
-          Position      [397, 105]
+          Position      [472, 105]
           Direction     right
           Flipped       on
           LabelPosition south
@@ -568,7 +569,7 @@ Plecs {
           Type          Port
           Name          "-"
           Show          on
-          Position      [397, 190]
+          Position      [472, 190]
           Direction     right
           Flipped       on
           LabelPosition south
@@ -672,19 +673,55 @@ Plecs {
         }
         Component {
           Type          Inductor
-          Name          "L1"
+          Name          "L_w"
           Show          on
-          Position      [345, 105]
+          Position      [405, 105]
           Direction     left
           Flipped       off
           LabelPosition north
+          CommentOut    DisabledClosedCircuit
           Parameter {
             Variable      "L"
-            Value         "L_PV"
+            Value         "1.303e-6*l_wire"
             Show          off
           }
           Parameter {
             Variable      "i_init"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Resistor
+          Name          "R_w"
+          Show          on
+          Position      [350, 145]
+          Direction     down
+          Flipped       off
+          LabelPosition west
+          CommentOut    DisabledOpenCircuit
+          Parameter {
+            Variable      "R"
+            Value         "10e6"
+            Show          off
+          }
+        }
+        Component {
+          Type          Capacitor
+          Name          "C_w"
+          Show          on
+          Position      [445, 145]
+          Direction     down
+          Flipped       on
+          LabelPosition west
+          CommentOut    DisabledOpenCircuit
+          Parameter {
+            Variable      "C"
+            Value         "0.291e-12*l_wire"
+            Show          off
+          }
+          Parameter {
+            Variable      "v_init"
             Value         "0"
             Show          off
           }
@@ -744,8 +781,22 @@ Plecs {
             DstTerminal   1
           }
           Branch {
-            DstComponent  "-"
-            DstTerminal   1
+            Points        [350, 190]
+            Branch {
+              Points        [445, 190]
+              Branch {
+                DstComponent  "-"
+                DstTerminal   1
+              }
+              Branch {
+                DstComponent  "C_w"
+                DstTerminal   2
+              }
+            }
+            Branch {
+              DstComponent  "R_w"
+              DstTerminal   1
+            }
           }
         }
         Connection {
@@ -780,17 +831,31 @@ Plecs {
         }
         Connection {
           Type          Wire
-          SrcComponent  "I_PV"
+          SrcComponent  "L_w"
           SrcTerminal   2
-          DstComponent  "L1"
-          DstTerminal   1
+          Points        [445, 105]
+          Branch {
+            DstComponent  "+"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "C_w"
+            DstTerminal   1
+          }
         }
         Connection {
           Type          Wire
-          SrcComponent  "L1"
+          SrcComponent  "I_PV"
           SrcTerminal   2
-          DstComponent  "+"
-          DstTerminal   1
+          Points        [350, 105]
+          Branch {
+            DstComponent  "L_w"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "R_w"
+            DstTerminal   2
+          }
         }
       }
       MaskProbe {
@@ -1025,20 +1090,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 25; 1274, 1576]
+      Location      [0, 26; 1274, 967]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAANEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAABHfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAABPwAAABEAP///wAABPwAAAXyAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAANwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGwA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABsAP///wAAAAMAAAT8AAABHfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAABPwAAABJAP///wAABXEAAAPlAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
-"AAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAAADAAAAZAAAAAIAAABkAAAACQAAAGQAAAAIAA"
-"AAZAAAAAUAAABkAAAAuAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACoAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAAADAA"
+"AAZAAAAAIAAABkAAAA3gAAAAsBAAABAAAAAAAAAAAAAAAAbf////8AAACBAAAAAAAAAAsAAAC4AAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAQAAAAAQAAAAAAAAPoAAAAABA="
+"AAmAAAAAQAAAAAAAAPoAAAAACY="
       PlotPalettes  "AAAAAQAAAAMAAAABAAAAAwAAAAEC//8u4P//zMwAAAAAAAEC//8AAP///"
 "/8AAAAAAAEC//9PsP////8AAAAAAAMAAAABAAAAAAEAAAAAAQAAAAADAAAAAQAAAAEAAAABAAAAAQ"
 "AAAAEAAAABAAAAAwAAAAEAAAAAAQAAAAABAAAAAAMAAAABP/AAAAAAAAAAAAABP/AAAAAAAAAAAAA"
@@ -3034,20 +3099,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [769, 30; 1535, 812]
+      Location      [522, 185; 1288, 987]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAJ0A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAA74AAAOzAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAIgA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGwA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABsAP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABJAP///wAAA0YAAANNAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAH0AAAACAAAAfQAAAAEAAAB9AAAABwAAAH0AAAAGAAAAfQAAAAUAAAB9AAAABAAAAH0AAAAJAA"
-"AAfQAAAAgAAAB9AAAA+gAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADPAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAH0AAAAIAAAAfQAAAAUAAAB9AAAABAAAAH0AAAAHAAAAfQAAAAYAAAB9AAAAAQAAAH0AAAADAA"
+"AAfQAAAAIAAAB9AAAA7wAAAAsBAAABAAAAAAAAAAAAAAAAbf////8AAACBAAAAAAAAAAsAAADJAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AArAAAAAQAAAAAAAAPoAAAAACs="
+"AAmAAAAAQAAAAAAAAPoAAAAACY="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "=="
