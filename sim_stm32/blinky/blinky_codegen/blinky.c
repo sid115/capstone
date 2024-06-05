@@ -2,7 +2,7 @@
  * Implementation file for: blinky
  * Generated with         : PLECS 4.8.2
  *                          STM32G4x 1.4.3
- * Generated on           : 16 May 2024 15:04:30
+ * Generated on           : 5 Jun 2024 13:15:11
  */
 #include "blinky.h"
 #ifndef PLECS_HEADER_blinky_h_
@@ -39,16 +39,28 @@
 #include <math.h>
 #include <string.h>
 #include "plx_hal.h"
+#include <stdlib.h>
 #define PLECSRunTimeError(msg) blinky_errorStatus = msg
+static const uint32_t blinky_subTaskPeriod[1]= {
+   /* [0.05, 0], [0, 0] */
+   50
+};
+static uint32_t blinky_subTaskTick[1];
+static char blinky_subTaskHit[1];
 #define blinky_UNCONNECTED 0
+static uint32_t blinky_D_uint32_t[1];
 static uint32_t blinky_tickLo;
 static int32_t blinky_tickHi;
 blinky_BlockOutputs blinky_B;
-blinky_ModelStates blinky_X _ALIGN;
+#if defined(EXTERNAL_MODE) && EXTERNAL_MODE
+const float * const blinky_ExtModeSignals[] = {
+   &blinky_B.PulseGenerator
+};
+#endif /* defined(EXTERNAL_MODE) */
 const char * blinky_errorStatus;
-const float blinky_sampleTime = 1.f;
+const float blinky_sampleTime = 0.001f;
 const char * const blinky_checksum =
-   "243e80b207436bb50c32280a5b93d501db2d56b4";
+   "8c69f7b3eb38863f2e286b5ac8b0413025785326";
 /* Target declarations */
 #define sin sinf
 #define cos cosf
@@ -58,14 +70,16 @@ void blinky_initialize(void)
 {
    blinky_tickHi = 0;
    blinky_tickLo = 0;
-   memset(&blinky_X, 0, sizeof(blinky_X));
+   /* Initialize sub-task tick counters */
+   blinky_subTaskTick[0] = 0;       /* [0, 0], [0.05, 0] */
+
 
    /* Target pre-initialization */
    blinky_initHal();
 
 
-   /* Initialization for Delay : 'blinky/Delay' */
-   blinky_X.Delay = false;
+   /* Initialization for Pulse Generator : 'blinky/Pulse\nGenerator' */
+   blinky_D_uint32_t[0] = 0;
 }
 
 void blinky_step(void)
@@ -74,21 +88,47 @@ void blinky_step(void)
    {
       return;
    }
+   {
+      size_t i;
+      for (i = 0; i < 1; ++i)
+      {
+         blinky_subTaskHit[i] = (blinky_subTaskTick[i] == 0);
+      }
+   }
+   if (blinky_subTaskHit[0])
+   {
+      /* Pulse Generator : 'blinky/Pulse\nGenerator' */
+      blinky_B.PulseGenerator = blinky_D_uint32_t[0] < 1 ? 1.f : 0.f;
+   }
 
-   /* Delay : 'blinky/Delay' */
-   blinky_B.Delay = blinky_X.Delay;
-
-   /* Logical Operator : 'blinky/Logical\nOperator' */
-   blinky_B.LogicalOperator = !blinky_B.Delay;
    /* Digital Out : 'blinky/Digital Out' */
-   PLXHAL_DIO_set(0, blinky_B.LogicalOperator);
+   PLXHAL_DIO_set(0, blinky_B.PulseGenerator);
    if (blinky_errorStatus)
    {
       return;
    }
+   if (blinky_subTaskHit[0])
+   {
+      /* Update for Pulse Generator : 'blinky/Pulse\nGenerator' */
+      blinky_D_uint32_t[0] += 1;
+      if (blinky_D_uint32_t[0] > 1)
+      {
+         blinky_D_uint32_t[0] = 0;
+      }
+   }
 
-   /* Update for Delay : 'blinky/Delay' */
-   blinky_X.Delay = blinky_B.LogicalOperator;
+   /* Increment sub-task tick counters */
+   {
+      size_t i;
+      for (i = 0; i < 1; ++i)
+      {
+         blinky_subTaskTick[i]++;
+         if (blinky_subTaskTick[i] >= blinky_subTaskPeriod[i])
+         {
+            blinky_subTaskTick[i] = 0;
+         }
+      }
+   }
 }
 
 void blinky_terminate(void)

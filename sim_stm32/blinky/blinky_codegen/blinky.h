@@ -2,7 +2,7 @@
  * Header file for: blinky
  * Generated with : PLECS 4.8.2
  *                  STM32G4x 1.4.3
- * Generated on   : 16 May 2024 15:04:30
+ * Generated on   : 5 Jun 2024 13:15:11
  */
 #ifndef PLECS_HEADER_blinky_h_
 #define PLECS_HEADER_blinky_h_
@@ -24,22 +24,21 @@ extern const char * blinky_errorStatus;
 extern const float blinky_sampleTime;
 
 
-/*
- * Model states */
-typedef struct
-{
-   bool Delay;                      /* blinky/Delay */
-} blinky_ModelStates;
-extern blinky_ModelStates blinky_X;
-
-
 /* Block outputs */
 typedef struct
 {
-   bool Delay;                      /* blinky/Delay */
-   bool LogicalOperator;            /* blinky/Logical Operator */
+   float PulseGenerator;            /* blinky/Pulse Generator */
 } blinky_BlockOutputs;
 extern blinky_BlockOutputs blinky_B;
+
+#if defined(EXTERNAL_MODE) && EXTERNAL_MODE
+/* External mode signals */
+#define blinky_NumExtModeSignals 1
+extern const float * const blinky_ExtModeSignals[];
+/* Tunable parameters */
+#define blinky_NumTunableParameters 0
+#endif /* defined(EXTERNAL_MODE) */
+
 
 /* Entry point functions */
 void blinky_initialize(void);

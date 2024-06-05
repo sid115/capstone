@@ -66,7 +66,10 @@ output_STM32G474RE/blinky_hal.o: blinky_hal.c \
  C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/system/freertos/include/task.h \
  C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/system/freertos/include/semphr.h \
  C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/system/freertos/include/queue.h \
- blinky.h c:\capstone\target_support_packages\tsp_stm32\gcc\inc\plx_dio.h \
+ blinky.h \
+ c:\capstone\target_support_packages\tsp_stm32\gcc\inc\plx_uart.h \
+ C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/inc_impl/plx_uart_impl.h \
+ c:\capstone\target_support_packages\tsp_stm32\gcc\inc\plx_dio.h \
  C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/inc_impl/plx_dio_impl.h \
  c:\capstone\target_support_packages\tsp_stm32\gcc\inc\plx_timer.h \
  C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/inc_impl/plx_timer_impl.h \
@@ -207,6 +210,10 @@ C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/system/freertos/include/sem
 C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/system/freertos/include/queue.h:
 
 blinky.h:
+
+c:\capstone\target_support_packages\tsp_stm32\gcc\inc\plx_uart.h:
+
+C:/Capstone/target_support_packages/tsp_stm32/gcc/g4/inc_impl/plx_uart_impl.h:
 
 c:\capstone\target_support_packages\tsp_stm32\gcc\inc\plx_dio.h:
 

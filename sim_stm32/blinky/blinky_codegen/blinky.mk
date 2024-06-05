@@ -26,8 +26,8 @@ MAKEFILE=blinky.mk
 LINKFILE=blinky.lkf
 INSTALL_DIR=./
 BASE_NAME=blinky
-PROGRAMMER_CMD=
-PROGRAMMER_ARGS=
+PROGRAMMER_CMD=C:/Capstone/target_support_packages/tsp_stm32/bin/c2p-gdb/c2p-gdb
+PROGRAMMER_ARGS=load --server-cmd "\"C:/Capstone/target_support_packages/tsp_stm32/bin/openocd/bin/openocd\" -s \"C:/Capstone/target_support_packages/tsp_stm32/bin/openocd/share/openocd/scripts\" -f board/stm32g431.cfg" --server-start-delay 1000 --port 3333 --nvic 0x8000000
 TASK_SCHEDULER=-DPLX_BARE_METAL_SCHEDULER
 HSE_VALUE=
 
