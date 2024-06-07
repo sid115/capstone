@@ -67,11 +67,11 @@ Plecs {
   ScriptsDialogGeometry "[3136 541 526 253]"
   ScriptsDialogSplitterPos "48"
   Schematic {
-    Location      [0, 26; 1755, 946]
+    Location      [1490, 820; 2739, 1740]
     ZoomFactor    1.33634
-    SliderPosition [-1, 0]
+    SliderPosition [574, 0]
     ShowBrowser   on
-    BrowserWidth  156
+    BrowserWidth  155
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -475,9 +475,9 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [365, 1045; 1638, 1934]
+        Location      [0, 825; 987, 1714]
         ZoomFactor    2.30729
-        SliderPosition [0, 0]
+        SliderPosition [-1, 0]
         ShowBrowser   off
         BrowserWidth  100
         Component {
@@ -628,17 +628,17 @@ Plecs {
           LabelPosition south
           Parameter {
             Variable      "x"
-            Value         "[200:100:1000]"
+            Value         "[0:100:1000]"
             Show          off
           }
           Parameter {
             Variable      "y"
-            Value         "[0:25:50]"
+            Value         "[-25:5:75]"
             Show          off
           }
           Parameter {
             Variable      "z"
-            Value         "[0:0.865:86.4]"
+            Value         "[0:0.864:86.4]"
             Show          off
           }
           Parameter {
@@ -1090,16 +1090,16 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 26; 1274, 967]
+      Location      [0, 26; 987, 973]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAANwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAGwA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABsAP///wAAAAMAAAT8AAABHfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAABPwAAABJAP///wAABXEAAAPlAAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAABPwAAABJAP///wAABDgAAAPsAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAAADAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAGQAAAAJAAAAZAAAAAgAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAADAA"
 "AAZAAAAAIAAABkAAAA3gAAAAsBAAABAAAAAAAAAAAAAAAAbf////8AAACBAAAAAAAAAAsAAAC4AAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
