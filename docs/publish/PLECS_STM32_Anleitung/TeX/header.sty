@@ -1,0 +1,64 @@
+\ProvidesPackage{header}
+
+\usepackage[ngerman]{babel} % für die deutsche Sprache
+\usepackage[T1]{fontenc} % Schriftkodierung (Für Sonderzeichen u.a.)
+\usepackage[utf8]{inputenc} % Für die direkte Eingabe von Umlauten im Editor u.a.
+\usepackage{fancyhdr} % Für Kopf- und Fußzeilen
+\usepackage{lmodern} % Schriftart "Latin Modern"
+\usepackage[normalem]{ulem} % Für das Unterstreichen von Text z.B. mit \uline{}
+\usepackage[left=3cm,right=2cm,top=1cm,bottom=1cm,
+textheight=245mm,textwidth=160mm,includeheadfoot,headsep=1cm,
+footskip=1cm,headheight=14.599pt]{geometry} % Einrichtung der Seite 
+\usepackage{setspace} % Paket zum Setzen des Zeilenabstandes
+\usepackage{graphicx} % Zum Laden von Graphiken
+\graphicspath{ {./Bilder/} }
+\usepackage{amsmath}
+\numberwithin{equation}{section} % Mathematische Ausdrücke werden mit Kapitelnummer.laufende Nummer nummeriert (anstatt nur laufende Nummer)
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref} % Hyperlinks im Inhaltsverzeichnis
+\usepackage{nameref} % Referenzen mit Text anstatt Sectionnumer
+\usepackage{pdfpages}
+\usepackage{csquotes}
+\usepackage{import}
+
+% Tabellen
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl} 
+\usepackage{rotating} 
+\usepackage{multirow}
+\usepackage{float}
+
+\usepackage{caption}
+\captionsetup[table]{skip=10pt} % caption für tabelle etwas nach oben
+
+\usepackage[style=numeric,sorting=none]{biblatex} % Stil hier angeben
+\addbibresource{Literatur.bib} % .bib Datei hier einbinden
+
+% Abkürzungen
+%\acrfull{GR} Schreibt Langform (Kurzform) -> für das erstmalige Nennen
+%\acrlong{GR} Schreibt Langform
+%\acrshort{GR} Schreibt Kurzform
+\usepackage[acronym, nonumberlist, nopostdot]{glossaries} % nonumberlist: no page numbers in glossary % nopostdot: no dot after Langform
+\makeglossaries
+\newacronym{GR}{GR}{GNU Radio} %{Label}{Kurzform}{Langform}
+\newacronym{QPSK}{QPSK}{Quadrature Phase Shift Keying}
+\newacronym{BPSK}{BPSK}{Binary Phase Shift Keying}
+\newacronym{RRC}{RRC}{Root Raised Cosine}
+\newacronym{AWGN}{AWGN}{Additive White Gaussian Noise}
+\newacronym{SNR}{SNR}{Signal to Noise Ratio}
+\newacronym{CMA}{CMA}{Constant Modulus Algorithm}
+\newacronym{NCO}{NCO}{Numerically Controlled Oscillator}
+\newacronym{PLL}{PLL}{Phase Locked Loop}
+\newacronym{MSB}{MSB}{Most Significant Bit}
+\newacronym{SPS}{SPS}{Samples per Symbol}
+\newacronym{AGC}{AGC}{Automatic Gain Control}
+
+\pagenumbering{Roman} % stringente Paginierung
+
+\title{\textbf{Thyristoren} - Handout}
+\author{N. Meierhöfer, M. Prenzlow}
+\date{Materialien der Elektrotechnik, Prof. D. Poggemann \\ Sommersemester 2024}
+
+\onehalfspacing
