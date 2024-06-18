@@ -30,20 +30,21 @@ Plecs {
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
 "10kHz\nRload = 8.8; \nfPWM  = 48000;\nfN    = 500;\nTN    = 1/fN;\nR_Cf  = 1e"
-"6;\nL_Tr\t= 1e-3;\nC_kp \t= 101.321e-6\n\n\n%Discharge\nC1 = 100e-6;\nR_C\t= "
-"1e9;\n\n\n% PV\nsun = 1000; % irradiation in W/m2\npv_string = 1; % number of"
-" pv modules in string\nn_strings = 1; % number of strings in parallel\npv_cap"
-" = 1e-3; % pv array output capacitance in F (default: 1e-6)\npv_init_vin = 1;"
-" % pv array initial input voltage in V\ntemperature = 25; % in deg. celsius. "
-"can be 0, 25, 50\nl_wire = 20 %Lenght of the wire in m connecting PV Module\n"
-"P_MPP = 400; % W\n\n\n% Altering Load\nI_Cf_min = 0; % min cap current in A\n"
-"R_SC = 10e-6; % short circuit resistance\nstep_time = 1; % time in s until ne"
-"w_load_state\nnew_load_state = 0; % 0: do nothing; 1: SC; -1: OC\ni_CL_max=10"
-"%for OCprotection1\n\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN"
-"; % time to average |i_C|\nmppt_call = 4*TN; % mppt call interval\n\n\n% ramp"
-"ing m\nm_min = 0;\nm_max = 1.2;\nm_target = 0.39; % threshold when m_enable i"
-"s true\nm_enable = 1; % enable threshold\n\n\nsim_duration = 5;%1000*TN;\ndea"
-"dtime = 20e-9;  % 200ns"
+"6;\nL_Tr\t= 1e-3;\nC_kp \t= 1/((2*pi()*fN)**2 * L_Tr);   %101.321e-6 bei L_Tr"
+" = 1e-3 und fN = 500Hz\n\n\n%Discharge\nC1 = 100e-6;\nR_C\t= 1e9;\n\n\n% PV\n"
+"sun = 1000; % irradiation in W/m2\npv_string = 1; % number of pv modules in s"
+"tring\nn_strings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv ar"
+"ray output capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv array init"
+"ial input voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50"
+"\nl_wire = 20 %Lenght of the wire in m connecting PV Module\nP_MPP = 400; % W"
+"\n\n\n% Altering Load\nI_Cf_min = 0; % min cap current in A\nR_SC = 10e-6; % "
+"short circuit resistance\nstep_time = 1; % time in s until new_load_state\nne"
+"w_load_state = 0; % 0: do nothing; 1: SC; -1: OC\ni_CL_max=10%for OCprotectio"
+"n1\n\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to aver"
+"age |i_C|\nmppt_call = 4*TN; % mppt call interval\n\n\n% ramping m\nm_min = 0"
+";\nm_max = 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable"
+" = 1; % enable threshold\n\n\nsim_duration = 5;%1000*TN;\ndeadtime = 20e-9;  "
+"% 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -72,7 +73,7 @@ Plecs {
     ZoomFactor    1.71886
     SliderPosition [899, -1]
     ShowBrowser   on
-    BrowserWidth  359
+    BrowserWidth  358
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -1074,20 +1075,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 26; 987, 1033]
+      Location      [0, 26; 987, 1039]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAALIA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGwA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABsAP///wAAAAMAAAQ4AAABHfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABDgAAABJAP///wAABDgAAAMKAAAA"
+"///wAAAGwA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABsAP///wAAAAMAAAQ4AAAAjfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABDgAAABJAP///wAABDgAAAOhAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAwAAAGQAAAQ4AA"
-"AACwEAAAEAAAAAAAAAAAAAAABt/////wAAAIEAAAAAAAAACwAAALgAAAABAAAAAAAAAGQAAAABAAA"
-"AAAAAAGQAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
-"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAArgAAAABAAAAAAAAA+gAA"
-"AAAJg=="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"wAAAGQAAAACAAAAZAAAAAEAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAAJAA"
+"AAZAAAAAgAAABkAAAEKQAAAAsBAAABAAAAAAAAAAAAAAAAbf////8AAACBAAAAAAAAAAsAAAC4AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"ANxAAAAAQAAAAAAAAPoAAAAACY="
       PlotPalettes  "AAAAAQAAAAMAAAABAAAAAwAAAAEC//8u4P//zMwAAAAAAAEC//8AAP///"
 "/8AAAAAAAEC//9PsP////8AAAAAAAMAAAABAAAAAAEAAAAAAQAAAAADAAAAAQAAAAEAAAABAAAAAQ"
 "AAAAEAAAABAAAAAwAAAAEAAAAAAQAAAAABAAAAAAMAAAABP/AAAAAAAAAAAAABP/AAAAAAAAAAAAA"
