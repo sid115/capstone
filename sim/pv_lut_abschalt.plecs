@@ -29,21 +29,21 @@ Plecs {
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
   InitializationCommands "Lf    = 50e-6;\nCf    = 15e-6;  % Lf & Cf => fres = "
-"10kHz\nRload = 8.8; \nfPWM  = 48000;\nfN    = 5000;\nTN    = 1/fN;\nR_Cf  = 1"
-"e6;\nL_Tr\t= 1e-3;\n\n\n%Discharge\nC1 = 100e-6;\nR_C\t= 1e9;\n\n\n% PV\nsun "
-"= 1000; % irradiation in W/m2\npv_string = 1; % number of pv modules in strin"
-"g\nn_strings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv array "
-"output capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv array initial "
-"input voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50\nl_"
-"wire = 20 %Lenght of the wire in m connecting PV Module\nP_MPP = 400; % W\n\n"
-"\n% Altering Load\nI_Cf_min = 0; % min cap current in A\nR_SC = 10e-6; % shor"
-"t circuit resistance\nstep_time = 1; % time in s until new_load_state\nnew_lo"
-"ad_state = 0; % 0: do nothing; 1: SC; -1: OC\ni_CL_max=10%for OCprotection1\n"
-"\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to average "
-"|i_C|\nmppt_call = 4*TN; % mppt call interval\n\n\n% ramping m\nm_min = 0;\nm"
-"_max = 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable = 1"
-"; % enable threshold\n\n\nsim_duration = 1;%1000*TN;\ndeadtime = 20e-9;  % 20"
-"0ns"
+"10kHz\nRload = 8.8; \nfPWM  = 48000;\nfN    = 500;\nTN    = 1/fN;\nR_Cf  = 1e"
+"6;\nL_Tr\t= 1e-3;\nC_kp \t= 101.321e-6\n\n\n%Discharge\nC1 = 100e-6;\nR_C\t= "
+"1e9;\n\n\n% PV\nsun = 1000; % irradiation in W/m2\npv_string = 1; % number of"
+" pv modules in string\nn_strings = 1; % number of strings in parallel\npv_cap"
+" = 1e-3; % pv array output capacitance in F (default: 1e-6)\npv_init_vin = 1;"
+" % pv array initial input voltage in V\ntemperature = 25; % in deg. celsius. "
+"can be 0, 25, 50\nl_wire = 20 %Lenght of the wire in m connecting PV Module\n"
+"P_MPP = 400; % W\n\n\n% Altering Load\nI_Cf_min = 0; % min cap current in A\n"
+"R_SC = 10e-6; % short circuit resistance\nstep_time = 1; % time in s until ne"
+"w_load_state\nnew_load_state = 0; % 0: do nothing; 1: SC; -1: OC\ni_CL_max=10"
+"%for OCprotection1\n\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN"
+"; % time to average |i_C|\nmppt_call = 4*TN; % mppt call interval\n\n\n% ramp"
+"ing m\nm_min = 0;\nm_max = 1.2;\nm_target = 0.39; % threshold when m_enable i"
+"s true\nm_enable = 1; % enable threshold\n\n\nsim_duration = 5;%1000*TN;\ndea"
+"dtime = 20e-9;  % 200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -68,11 +68,11 @@ Plecs {
   ScriptsDialogGeometry "[429 357 1276 571]"
   ScriptsDialogSplitterPos "156"
   Schematic {
-    Location      [0, 24; 1920, 1002]
-    ZoomFactor    0.662796
-    SliderPosition [0, 0]
+    Location      [987, 794; 2742, 1683]
+    ZoomFactor    1.71886
+    SliderPosition [899, -1]
     ShowBrowser   on
-    BrowserWidth  463
+    BrowserWidth  359
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -1074,20 +1074,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 24; 1920, 1024]
+      Location      [0, 26; 987, 1033]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAKkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAABHfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAABPwAAABEAP///wAAB4AAAAPJAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAALIA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGwA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABsAP///wAAAAMAAAQ4AAABHfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABDgAAABJAP///wAABDgAAAMKAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"AAAAGQAAAAJAAAAZAAAAAQAAABkAAAABQAAAGQAAAAGAAAAZAAAAAcAAABkAAAAAQAAAGQAAAACAA"
-"AAZAAAAAMAAABkAAAA0AAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACtAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAjAAAAAQAAAAAAAAPoAAAAACM="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAC"
+"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAwAAAGQAAAQ4AA"
+"AACwEAAAEAAAAAAAAAAAAAAABt/////wAAAIEAAAAAAAAACwAAALgAAAABAAAAAAAAAGQAAAABAAA"
+"AAAAAAGQAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
+"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAArgAAAABAAAAAAAAA+gAA"
+"AAAJg=="
       PlotPalettes  "AAAAAQAAAAMAAAABAAAAAwAAAAEC//8u4P//zMwAAAAAAAEC//8AAP///"
 "/8AAAAAAAEC//9PsP////8AAAAAAAMAAAABAAAAAAEAAAAAAQAAAAADAAAAAQAAAAEAAAABAAAAAQ"
 "AAAAEAAAABAAAAAwAAAAEAAAAAAQAAAAABAAAAAAMAAAABP/AAAAAAAAAAAAABP/AAAAAAAAAAAAA"
@@ -1098,7 +1098,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -2803,7 +2803,7 @@ Plecs {
       Type          Inductor
       Name          "L_Tr"
       Show          on
-      Position      [745, 95]
+      Position      [725, 95]
       Direction     left
       Flipped       off
       LabelPosition north
@@ -3641,6 +3641,25 @@ Plecs {
         Show          off
       }
     }
+    Component {
+      Type          Capacitor
+      Name          "C_kp"
+      Show          on
+      Position      [725, 120]
+      Direction     left
+      Flipped       on
+      LabelPosition north
+      Parameter {
+        Variable      "C"
+        Value         "C_kp"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "T2D2"
@@ -3744,9 +3763,15 @@ Plecs {
         Branch {
           Points        [665, 135]
           Branch {
-            Points        [785, 135]
-            DstComponent  "Tr1"
-            DstTerminal   2
+            Points        [770, 135]
+            Branch {
+              Points        [785, 135]
+              DstComponent  "Tr1"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [770, 125]
+            }
           }
           Branch {
             DstComponent  "C_f"
@@ -3761,19 +3786,26 @@ Plecs {
     }
     Connection {
       Type          Wire
-      SrcComponent  "Tr1"
-      SrcTerminal   4
-      Points        [805, 135; 905, 135]
+      SrcComponent  "Rload"
+      SrcTerminal   1
+      Points        [1115, 135]
       Branch {
         Points        [1055, 135]
         Branch {
-          Points        [1115, 135]
+          Points        [905, 135]
           Branch {
-            DstComponent  "Rload"
-            DstTerminal   1
+            Points        [845, 135]
+            Branch {
+              Points        [805, 135]
+              DstComponent  "Tr1"
+              DstTerminal   4
+            }
+            Branch {
+              Points        [845, 125]
+            }
           }
           Branch {
-            DstComponent  "R_OC"
+            DstComponent  "Usec"
             DstTerminal   2
           }
         }
@@ -3783,7 +3815,7 @@ Plecs {
         }
       }
       Branch {
-        DstComponent  "Usec"
+        DstComponent  "R_OC"
         DstTerminal   2
       }
     }
@@ -3792,13 +3824,6 @@ Plecs {
       SrcComponent  "Usec"
       SrcTerminal   3
       DstComponent  "Goto12"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Wire
-      SrcComponent  "Tr1"
-      SrcTerminal   3
-      DstComponent  "Isec"
       DstTerminal   1
     }
     Connection {
@@ -4221,13 +4246,6 @@ Plecs {
       DstTerminal   1
     }
     Connection {
-      Type          Wire
-      SrcComponent  "L_Tr"
-      SrcTerminal   2
-      DstComponent  "Tr1"
-      DstTerminal   1
-    }
-    Connection {
       Type          Signal
       SrcComponent  "Probe"
       SrcTerminal   1
@@ -4308,8 +4326,16 @@ Plecs {
       SrcTerminal   1
       Points        [665, 95]
       Branch {
-        DstComponent  "L_Tr"
-        DstTerminal   1
+        Points        [695, 95]
+        Branch {
+          DstComponent  "L_Tr"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [695, 120]
+          DstComponent  "C_kp"
+          DstTerminal   2
+        }
       }
       Branch {
         DstComponent  "Am1"
@@ -4520,9 +4546,43 @@ Plecs {
       DstComponent  "Product4"
       DstTerminal   4
     }
+    Connection {
+      Type          Wire
+      SrcComponent  "Tr1"
+      SrcTerminal   3
+      Points        [845, 95]
+      Branch {
+        DstComponent  "Isec"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [845, 105]
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Tr1"
+      SrcTerminal   1
+      Points        [770, 95]
+      Branch {
+        Points        [750, 95]
+        Branch {
+          DstComponent  "L_Tr"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [750, 120]
+          DstComponent  "C_kp"
+          DstTerminal   1
+        }
+      }
+      Branch {
+        Points        [770, 105]
+      }
+    }
     Annotation {
       Name          "<html><body>\n<p> 1:2 or 1:4</p></body></html>"
-      Position      [795, 150]
+      Position      [795, 160]
     } 
     Annotation {
       Name          "<html><body>\n<p align=\"center\">PV string model based o"
