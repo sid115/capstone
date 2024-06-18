@@ -67,4 +67,4 @@ lut(lut < 0) = 0;   % set all negative Values to zero
 
 
 %%% OUTPUT %%%
-save('-V7', "../out/pv_lut.mat",'lut'); % V7 to ensure compatibility with plecs
+save('-V7', "../../out/pv_lut.mat",'lut'); % V7 to ensure compatibility with plecs

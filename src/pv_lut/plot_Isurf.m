@@ -5,7 +5,7 @@ function plot_Isurf_2
 %Format of lookup data is (Sun:temperature:voltage)
 %Temperature values are defined as 1: 0C, 2: 25C, 3: 50C
 
-load('../out/pv_lut.mat');
+load('../../out/pv_lut.mat');
 T = 1
 n = 1; %number of panels in array
 voltage = [0:0.864:86.4];

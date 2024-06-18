@@ -35,15 +35,15 @@ Plecs {
 "\nn_strings = 1; % number of strings in parallel\npv_cap = 1e-3; % pv array o"
 "utput capacitance in F (default: 1e-6)\npv_init_vin = 1; % pv array initial i"
 "nput voltage in V\ntemperature = 25; % in deg. celsius. can be 0, 25, 50\nl_w"
-"ire = 20 %Lenght of the wire in m connecting PV Module\nP_MPP = 400; % W\n\n"
+"ire = 20; %Lenght of the wire in m connecting PV Module\nP_MPP = 400; % W\n\n"
 "\n% Altering Load\nI_Cf_min = 0; % min cap current in A\nR_SC = 10e-6; % shor"
 "t circuit resistance\nstep_time = 0.5; % time in s until new_load_state\nnew_"
-"load_state = 1; % 0: do nothing; 1: SC; -1: OC\ni_CL_max=10%for OCprotection1"
-"\n\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to averag"
-"e |i_C|\nmppt_call = 4*TN; % mppt call interval\n\n\n% ramping m\nm_min = 0;"
-"\nm_max = 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enable "
-"= 1; % enable threshold\n\n\nsim_duration = 1000*TN;\ndeadtime = 20e-9;  % 20"
-"0ns"
+"load_state = 0; % 0: do nothing; 1: SC; -1: OC\ni_CL_max = 10; %for OCprotect"
+"ion1\n\n\n% MPPT\nm_init = 0.2;\nm_step = 0.01;\ni_C_avg_t = TN; % time to av"
+"erage |i_C|\nmppt_call = 4*TN; % mppt call interval\n\n\n% ramping m\nm_min ="
+" 0;\nm_max = 1.2;\nm_target = 0.39; % threshold when m_enable is true\nm_enab"
+"le = 1; % enable threshold\n\n\nsim_duration = 500*TN;\ndeadtime = 20e-9;  % "
+"200ns"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -65,14 +65,14 @@ Plecs {
   ExternalModeSettings ""
   AlgebraicLoopMethod "1"
   AlgebraicLoopTolerance "1e-6"
-  ScriptsDialogGeometry "[-2398 27 1196 1891]"
+  ScriptsDialogGeometry "[2562 27 1196 1891]"
   ScriptsDialogSplitterPos "156"
   Schematic {
-    Location      [0, 24; 1920, 1002]
+    Location      [0, 25; 2552, 1554]
     ZoomFactor    1.26617
-    SliderPosition [0, -1]
+    SliderPosition [0, 0]
     ShowBrowser   on
-    BrowserWidth  70
+    BrowserWidth  157
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -923,19 +923,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 24; 1920, 1024]
+      Location      [0, 25; 1274, 1576]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAIEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAeAAAAApfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABEAP///wAAB4AAAAMeAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAAAZ/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABPwAAABEAP///wAABPwAAAWFAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALuAMAAAAGAAAAB"
-"wAAAGQAAAAFAAAAZAAAAAQAAABkAAAACQAAAGQAAAAIAAAAZAAAAAMAAABkAAAHgAAAAAsBAAABAA"
-"AAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACnAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABkAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAWtAAAAAQAAAAAAAAPoAAAAACM="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"QAAAGQAAAAEAAAAZAAAAAcAAABkAAAABgAAAGQAAAABAAAAZAAAAAMAAABkAAAAAgAAAGQAAAAJAA"
+"AAZAAAAAgAAABkAAAE/AAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACnAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"ARVAAAAAQAAAAAAAAPoAAAAABA="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "=="
@@ -943,7 +944,7 @@ Plecs {
       TimeRange     "0.0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    ""
@@ -1073,20 +1074,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [4, 28; 1924, 1036]
+      Location      [0, 25; 1274, 1576]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAKkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAABHfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAABPwAAABEAP///wAAB4AAAAPRAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAT8AAAAdfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABPwAAABEAP///wAABPwAAAV3AAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"QAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAAEAAAAZAAAAAkAAABkAAAACAAAAGQAAAADAA"
-"AAZAAAAAIAAABkAAAA0AAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACtAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"QAAAGQAAAAEAAAAZAAAAAcAAABkAAAABgAAAGQAAAABAAAAZAAAAAMAAABkAAAAAgAAAGQAAAAJAA"
+"AAZAAAAAgAAABkAAAE7gAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACnAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAjAAAAAQAAAAAAAAPoAAAAACM="
+"ARHAAAAAQAAAAAAAAPoAAAAABA="
       PlotPalettes  "AAAAAQAAAAMAAAABAAAAAwAAAAEC//8u4P//zMwAAAAAAAEC//8AAP///"
 "/8AAAAAAAEC//9PsP////8AAAAAAAMAAAABAAAAAAEAAAAAAQAAAAADAAAAAQAAAAEAAAABAAAAAQ"
 "AAAAEAAAABAAAAAwAAAAEAAAAAAQAAAAABAAAAAAMAAAABP/AAAAAAAAAAAAABP/AAAAAAAAAAAAA"
@@ -1097,7 +1098,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -1459,7 +1460,7 @@ Plecs {
       SrcModel      "_pwm.plecs"
       Name          "PWM"
       Show          on
-      Position      [415, 1045]
+      Position      [505, 1045]
       Direction     up
       Flipped       off
       LabelPosition none
@@ -1477,6 +1478,11 @@ Plecs {
       Terminal {
         Type          Input
         Position      [-40, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-40, -10]
         Direction     left
       }
     }
@@ -1613,7 +1619,7 @@ Plecs {
       Type          Goto
       Name          "Goto1"
       Show          off
-      Position      [485, 1035]
+      Position      [575, 1035]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -1632,7 +1638,7 @@ Plecs {
       Type          Goto
       Name          "Goto2"
       Show          off
-      Position      [485, 1060]
+      Position      [575, 1060]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2044,7 +2050,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [4, 28; 894, 1557]
+        Location      [0, 25; 1274, 1554]
         ZoomFactor    1.96257
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2891,6 +2897,46 @@ Plecs {
         Signals       {"Inductor current"}
       }
     }
+    Component {
+      Type          Constant
+      Name          "fN"
+      Show          off
+      Position      [430, 1005]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Frame         [-10, -10; 10, 10]
+      Parameter {
+        Variable      "Value"
+        Value         "fN"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Display
+      Name          "Display"
+      Show          off
+      Position      [495, 1005]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-31, -11; 31, 11]
+      Parameter {
+        Variable      "Notation"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Precision"
+        Value         "4"
+        Show          off
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "T2D2"
@@ -3190,7 +3236,7 @@ Plecs {
       Type          Signal
       SrcComponent  "PWM"
       SrcTerminal   2
-      Points        [465, 1045]
+      Points        [555, 1045]
       DstComponent  "Goto2"
       DstTerminal   1
     }
@@ -3512,6 +3558,21 @@ Plecs {
       DstComponent  "Goto5"
       DstTerminal   1
     }
+    Connection {
+      Type          Signal
+      SrcComponent  "fN"
+      SrcTerminal   1
+      Points        [445, 1005]
+      Branch {
+        Points        [445, 1035]
+        DstComponent  "PWM"
+        DstTerminal   4
+      }
+      Branch {
+        DstComponent  "Display"
+        DstTerminal   1
+      }
+    }
     Annotation {
       Name          "<html><body>\n<p> 1:2 or 1:4</p></body></html>"
       Position      [795, 150]
@@ -3535,102 +3596,117 @@ Plecs {
 "y></html>"
       Position      [155, 770]
     } 
-  }
-  Script {
-    Name          "init"
-    Script        "Kp=0.5"
-  }
-  Script {
-    Name          "ParameterSweepParallel"
-    Script        "% clear all previous traces in scope 'Scope' in the current"
-" model\nplecs('clc');\nplecs('scope', './Scope', 'ClearTraces');\n\n% Evaluat"
-"e simulation results in callback function\nfunction result = callback(index, "
-"data)\n    % hold and label trace\n    name = ['fPWM=', mat2str(freqValues(in"
-"dex)), 'Hz'];\n    plecs('scope', './Scope', 'HoldTrace', name);\n    % Find "
-"maximum power values and index\n    if isstruct(data)\n        [maxp, maxidx]"
-" = max(data.Values(1,:));\n        maxt = data.Time(maxidx);\n        % Reduc"
-"ing simulation results by return value 'result'\n        result = [maxp, maxt"
-"];\n    else\n        % Print error message to Octave console\n        printf"
-"(' Error in Simulation %d for fPWM = %d Hz: %s\\n', index, freqValues(index),"
-" data);\n    end\nend\n\n% Set value for fPWM to be swept\nfreqValues = [4000"
-"0 45000 50000]; % in Hz\n\n% Initialize simStruct as cell array with all valu"
-"es for fPWM\nfor ix = 1:length(freqValues)\n    simStructs{ix}.ModelVars.varf"
-"PWM = freqValues(ix);\n    % Name of 'ModelVars' can be assigned for diagnost"
-"ic purposes\n    simStructs{ix}.Name = ['fPWM=' mat2str(freqValues(ix)) 'Hz']"
-";\nend\n\n% Start simulation, return result from callback function into 'out'"
-"\n% Analysis will be moved to callback function to reduce simulation results"
-"\nout = plecs('simulate', simStructs, @(index, data) callback(index, data));"
-"\n\nfor ix = 1:length(freqValues)\n    % Detect if errors occurred in paralle"
-"l simulation\n    if ischar(out{ix})\n        % Output maximum current values"
-" to Octave console\n        printf(' Error for fPWM = %d Hz: %s\\n', freqValu"
-"es(ix), out{ix});\n    else\n        printf(' Max power for fPWM = %d Hz: %f "
-"W at %f s\\n', freqValues(ix), out{ix}(1), out{ix}(2));\n    end\nend"
+    Annotation {
+      Name          "<html><body>\n<p>Hz</p></body></html>"
+      Position      [535, 1005]
+    } 
   }
   Script {
     Name          "ParallelSweepSequential"
-    Script        base64 "bWRsVmFycyA9IHN0cnVjdCgnZk4nLCA1ZTMpOyAlIEluaXRpYWxp"
-"c2llcnVuZyBkZXIgTW9kZWxsdmFyaWFibGVuIG1pdCBmTiBhbnN0ZWxsZSB2b24gZlBXTQpvcHRzI"
-"D0gc3RydWN0KCdNb2RlbFZhcnMnLCBtZGxWYXJzKTsKCnBsZWNzKCdzY29wZScsICcuL1Njb3BlJy"
-"wgJ0NsZWFyVHJhY2VzJyk7CgpmTlZhbHVlcyA9IFs1LCA2LCA3XTsgJSBOZW5uZnJlcXVlbnplbiB"
-"pbiBrSHoKZm9yIGl4ID0gMTpsZW5ndGgoZk5WYWx1ZXMpCiAgICBvcHRzLk1vZGVsVmFycy5mTiA9"
-"IGZOVmFsdWVzKGl4KSAqIDFlMzsgJSBVbXdhbmRsdW5nIHZvbiBrSHogaW4gSHogdW5kIFp1d2Vpc"
-"3VuZyB6dSBmTgogICAgb3V0ID0gcGxlY3MoJ3NpbXVsYXRlJywgb3B0cyk7CiAgICAKICAgICUgw5"
-"xiZXJwcsO8ZmVuLCBvYiAnb3V0JyBnw7xsdGlnZSBEYXRlbiBlbnRow6RsdAogICAgaWYgaXNlbXB"
-"0eShvdXQpIHx8IH5pc2ZpZWxkKG91dCwgJ1ZhbHVlcycpIHx8IGlzZW1wdHkob3V0LlZhbHVlcykK"
-"ICAgICAgICBmcHJpbnRmKCdTaW11bGF0aW9uIGbDvHIgZk49JWRrSHogaGF0IGtlaW5lIERhdGVuI"
-"Hp1csO8Y2tnZWdlYmVuLlxuJywgZk5WYWx1ZXMoaXgpKTsKICAgICAgICBjb250aW51ZTsgJSDDnG"
-"JlcnNwcmluZ2VuIGRlciBha3R1ZWxsZW4gSXRlcmF0aW9uLCB3ZW5uIGtlaW5lIERhdGVuIHZvcmh"
-"hbmRlbiBzaW5kCiAgICBlbmQKICAgIAogICAgcGxlY3MoJ3Njb3BlJywgJy4vU2NvcGUnLCAnSG9s"
-"ZFRyYWNlJywgLi4uCiAgICAgICAgIFsnZk49JyBtYXQyc3RyKGZOVmFsdWVzKGl4KSkgJ2tIeiddK"
-"TsKICAgIFttYXh2LCBtYXhpZHhdID0gbWF4KG91dC5WYWx1ZXMoMSw6KSk7CiAgICBwcmludGYoJ0"
-"1heCBjdXJyZW50IGZvciBmTj0lZGtIejogJWYgYXQgJWZzXG4nLCAuLi4KICAgICAgICAgICBmTlZ"
-"hbHVlcyhpeCksIG1heHYsIG91dC5UaW1lKG1heGlkeCkpOwplbmQ="
+    Script        "% Clear the Octave console\nplecs('clc');\n\n% Define the P"
+"LECS model path\nmodelPath = 'pv_lut'; % Set to your actual model path\n\n% D"
+"efine the scope path that contains the signal to be measured\nscopePath = [mo"
+"delPath '/Scope'];  % Set to your actual scope path\n\n% Define the parameter"
+" to sweep and its range\nparamName = 'fPWM';\nparamStartValue = 40000;     % "
+"Start value for the parameter sweep\nparamEndValue = 50000;       % End value"
+" for the parameter sweep\nparamStepValue = 1000;       % Step value for the p"
+"arameter sweep\nparamValues = paramStartValue:paramStepValue:paramEndValue;\n"
+"\n% Define the measurement signal and analysis settings\nplot   = 4;         "
+"         % Plot number in scope\nsignal = 2;                  % Signal number"
+" in plot\nanalysisType = '';        % Analysis type (valid values: '' (none -"
+"> outputs whole signal), 'delta', 'min', 'max', 'absmax', 'mean', 'rms', 'thd"
+"')\ntimeInterval = [1, 1.5];     % Time interval for the analysis\n\n% Create"
+" simStruct with field 'ModelVars'\nmdlVars = struct(paramName, paramStartValu"
+"e);\nsimStruct = struct('ModelVars', mdlVars);\n\n% Initialize array to store"
+" measured values\nmeasValues = zeros(1, length(paramValues));\n\n% Verbose ou"
+"tput: Start of the parameter sweep\nfprintf('Starting parameter sweep for %s."
+"..\\n', paramName);\n\n% Iterate over parameter values\nfor ix = 1:length(par"
+"amValues)\n    % Verbose output: Current parameter value\n    fprintf('\\nSet"
+"ting %s to %d\\n', paramName, paramValues(ix));\n\n    % Set the parameter of"
+" the specified component\n    simStruct.ModelVars.(paramName) = paramValues(i"
+"x);\n    \n    % Clear previous simulation data (if applicable)\n    plecs('s"
+"cope', scopePath, 'ClearTraces');\n\n    % Verbose output: Starting simulatio"
+"n\n    fprintf('  Starting simulation for %s = %d...\\n', paramName, paramVal"
+"ues(ix));\n    plecs('simulate', simStruct);\n    \n    % Verbose output: Ret"
+"rieving scope data\n    fprintf('  Retrieving scope data for %s = %d...\\n', "
+"paramName, paramValues(ix));\n    if analysisType == ''\n        cursorData ="
+" plecs('scope', scopePath, 'GetCursorData', timeInterval);\n    else\n       "
+" cursorData = plecs('scope', scopePath, 'GetCursorData', timeInterval, analys"
+"isType);\n    end\n    \n    % Accessing the measured signal values\n    if i"
+"sfield(cursorData, 'cursorData') && ~isempty(cursorData.cursorData)\n        "
+"% If analysisType is empty, use the whole array\n        if analysisType == '"
+"'\n            measValues(ix) = cursorData.cursorData{plot}{signal}\n        "
+"    fprintf('  Measurement for %s = %d: %f\\n', paramName, paramValues(ix), m"
+"easValues(ix));\n        else\n            measValues(ix) = cursorData.cursor"
+"Data{plot}{signal}.(analysisType);\n            fprintf('  Measurement for %s"
+" = %d @ t = %f: %f\\n', paramName, paramValues(ix), timeInterval(1), measValu"
+"es(ix));\n        end\n    else\n        fprintf('  No data found in cursorDa"
+"ta for %s = %d\\n', paramName, paramValues(ix));\n    end\nend\n\n% Write the"
+" measured values to a CSV file\ncsvFileName = [modelPath '_' paramName '_swee"
+"p.csv'];\n%csvData = [paramValues', measValues];\ncsvData = [paramValues, mea"
+"sValues];\ncsvwrite(csvFileName, csvData);\nfprintf('\\nParameter sweep compl"
+"eted. Results written to %s\\n', csvFileName);"
   }
   Script {
-    Name          "printMembers"
-    Script        "% Clear the Octave console\nplecs('clc');\n\n% Define the P"
-"LECS model path (Update this to your model's specific path)\nmodelPath = './p"
-"v_lut';\n\n% Define the Power signal's probe path (Update the component paths"
-" as necessary)\npowerSignalPath = [modelPath '/power'];\n\n% create simStruct"
-" with field 'ModelVars'\nmdlVars = struct('fPWM', 50e-6);\nsimStruct = struct"
-"('ModelVars', mdlVars);\n\n% Parametric values to be swept\nfreqValues = [400"
-"00 50000]; % in Hz\n\nfor ix = 1:length(freqValues)\n    % Set value for fPWM"
-"\n    simStruct.ModelVars.fPWM = freqValues(ix);\n    simStruct.SolverOpts.Ou"
-"tputTimes = 0.001:0.2e-5:0.002;\n    \n    % Clear previous simulation data ("
-"if applicable)\n    plecs('scope', './Scope', 'ClearTraces');\n    \n    % St"
-"art simulation, return probed signal values in 'out'\n    out = plecs('simula"
-"te', simStruct);\n    \n    % Print each member of the out structure includin"
-"g debug information\n    printf('----------------------------------------\\n'"
-");\n    printf('Simulation result for fPWM = %d Hz:\\n', freqValues(ix));\n  "
-"  \n    if isempty(out)\n        printf('The simulation output is empty. Plea"
-"se ensure Probes are correctly configured.\\n');\n    else\n        fields = "
-"fieldnames(out);\n        for i = 1:length(fields)\n            fieldName = f"
-"ields{i};\n            fieldValue = out.(fieldName);\n\n            % Display"
-" field name and determine how to print the field value\n            printf('F"
-"ield: %s\\n', fieldName);\n            \n            if isnumeric(fieldValue)"
-" || ischar(fieldValue)\n                % Directly print numeric or char data"
-"\n                disp(fieldValue);\n            elseif isstruct(fieldValue)"
-"\n                % Recursive call for nested structures\n                dis"
-"p(fieldnames(fieldValue));\n            elseif istable(fieldValue)\n         "
-"       % Display table data\n                disp(fieldValue);\n            e"
-"lse\n                % For other data types, describe the class and size\n   "
-"             printf('Type: %s\\n', class(fieldValue));\n                print"
-"f('Size: %s\\n\\n', mat2str(size(fieldValue)));\n            end\n           "
-" \n            % Additional debug information: Check for empty fields explici"
-"tly\n            if isempty(fieldValue)\n                printf('[DEBUG]: The"
-" field \"%s\" is empty\\n', fieldName);\n            end\n        end\n    en"
-"d\n    printf('----------------------------------------\\n');\n    \n    % Ch"
-"eck if 'Power' data is available\n    if isfield(out, 'PowerSignal')\n       "
-" powerValues = out.PowerSignal.Values; % Retrieve power values\n        timeV"
-"alues = out.PowerSignal.Time;    % Retrieve corresponding time values\n      "
-"  \n        % Find maximum power value and index\n        [maxv, maxidx] = ma"
-"x(powerValues);\n        \n        % Output maximum power values to Octave co"
-"nsole\n        printf('Max power for fPWM = %d Hz: %f W at %f s\\n', freqValu"
-"es(ix), maxv, timeValues(maxidx));\n    else\n        printf('Power signal no"
-"t found in simulation output. Please ensure it is being logged correctly.\\n'"
-");\n    end\nend\n\n% Display the current component and circuit for verificat"
-"ion\ncurrentComponent = plecs('get', '', 'CurrentComponent');\ncurrentCircuit"
-" = plecs('get', '', 'CurrentCircuit');\nprintf('Current Component: %s\\n', cu"
-"rrentComponent);\nprintf('Current Circuit: %s\\n', currentCircuit);"
+    Name          "test"
+    Script        "%%% BEGIN USER DEFINITIONS %%%\n\n%% Paths\nmodelPath = 'pv"
+"_lut';        % PLECS model path (name of simulation file)\nscopePath = 'Scop"
+"e';         % Scope path that contains the signal to be measured relative to "
+"the model path\noutPath = '../out/automated_testing'; % Output path for the C"
+"SV and BMP files\n\n% Ensure outPath directory exists\nif ~exist(outPath, 'di"
+"r')\n    mkdir(outPath);\nend\n\n%% Parameters to sweep and their ranges\npar"
+"amNames = {'fPWM', 'fN'}; % Names of the parameters to sweep\nparamRanges = {"
+"40000:1000:41000, 500:100:600}; % Corresponding ranges for each parameter (st"
+"art:step:end)\n\n% Signal to measure and analysis settings\nsignal = 8;      "
+"           % Signal number in scope. Count through every signal in every plot"
+".\ntimeInterval = [1, 1.5];    % Time interval for the analysis. Values are i"
+"n seconds.\n\n% Output files\nbmp = true;                 % Export BMP files"
+"\n\n% Function that lets the user perform additional operations on the measur"
+"ed scope data\nfunction customOperations(scopeData, paramRanges, paramNames, "
+"outPath)\n    % Average the signal over the time interval\n    avgSignal = ar"
+"rayfun(@(x) mean(x.signal), scopeData);\n    \n    % Ensure avgSignal is a co"
+"lumn vector\n    avgSignal = avgSignal(:);\n    \n    % Find the parameter co"
+"mbination that maximizes the signal\n    [~, maxIx] = max(avgSignal);\n    fp"
+"rintf('  Best parameter combination: %s\\n', strjoin(arrayfun(@(p, v) sprintf"
+"('%s = %g', paramNames{p}, scopeData(maxIx).paramValues(p)), 1:numel(paramNam"
+"es), 'UniformOutput', false), ', '));\n\n    % Extract parameter values\n    "
+"paramValues = reshape([scopeData.paramValues], numel(paramRanges), []).';\n\n"
+"    % Create 3D scatter plot\n    figure;\n    scatter3(paramValues(:, 1), pa"
+"ramValues(:, 2), avgSignal, 'filled');\n    xlabel(paramNames{1});\n    ylabe"
+"l(paramNames{2});\n    zlabel('Signal');\n    title('Signal over parameter sp"
+"ace');\n    grid on;\n    saveas(gcf, [outPath '/3d_scatter_plot.bmp']);\n   "
+" close(gcf);\nend\n\n%%% END USER DEFINITIONS %%%\n\n%%% BEGIN SCRIPT %%%\n\n"
+"% Clear the Octave console\nplecs('clc');\n\n% Set the scope path to the full"
+" path\nscopePath = [modelPath '/' scopePath];\n\n% Generate all combinations "
+"of parameter values\n[paramGrid{1:numel(paramRanges)}] = ndgrid(paramRanges{:"
+"});\nparamCombos = cell2mat(cellfun(@(x) x(:), paramGrid, 'UniformOutput', fa"
+"lse));\n\n% Number of parameter combinations\nnumCombos = size(paramCombos, 1"
+");\n\n% Initialize data struct to store simulation results\nscopeData = struc"
+"t();\n\n% Start of the parameter sweep\nfprintf('Starting parameter sweep for"
+" %s...\\n', strjoin(paramNames, ', '));\n\n% Iterate over parameter combinati"
+"ons\nfor ix = 1:numCombos\n    % Verbose output: Current parameter values\n  "
+"  comboStr = strjoin(arrayfun(@(p, v) sprintf('%s = %g', paramNames{p}, param"
+"Combos(ix, p)), 1:numel(paramNames), 'UniformOutput', false), ', ');\n    fpr"
+"intf('\\nSetting %s\\n', comboStr);\n\n    % Set the parameters of the specif"
+"ied components\n    opts = struct('ModelVars', cell2struct(num2cell(paramComb"
+"os(ix, :)), paramNames, 2));\n\n    % Clear previous simulation data (if appl"
+"icable)\n    plecs('scope', scopePath, 'ClearTraces');\n\n    % Start simulat"
+"ion\n    fprintf('  Running simulation...\\n');\n    plecs('simulate', opts);"
+"\n\n    % Retrieve scope data and export it to a CSV and optionally BMP file"
+"\n    fprintf('  Retrieving scope data...\\n');\n    fileName = [outPath '/' "
+"modelPath '_' strjoin(arrayfun(@(p) sprintf('%s_%g', paramNames{p}, paramComb"
+"os(ix, p)), 1:numel(paramNames), 'UniformOutput', false), '_')];\n    plecs('"
+"scope', scopePath, 'ExportCSV', [fileName '.csv']);\n    if bmp\n        plec"
+"s('scope', scopePath, 'ExportBitmap', [fileName '.bmp']);\n    end\n\n    % L"
+"oad the CSV file and extract the signal data to a struct\n    data = csvread("
+"[fileName '.csv']);\n    scopeData(ix).paramValues = paramCombos(ix, :);\n   "
+" scopeData(ix).time = data(:, 1);  % First column is time\n    scopeData(ix)."
+"signal = data(:, signal+1);\n\n    % Only consider the time interval specifie"
+"d\n    timeIx = scopeData(ix).time >= timeInterval(1) & scopeData(ix).time <="
+" timeInterval(2);\n    scopeData(ix).time = scopeData(ix).time(timeIx);\n    "
+"scopeData(ix).signal = scopeData(ix).signal(timeIx);\nend\n\n% Run custom ope"
+"rations\nfprintf('  Custom operations...\\n');\ncustomOperations(scopeData, p"
+"aramRanges, paramNames, outPath);\n\nfprintf('\\nParameter sweep completed. R"
+"esults written to %s\\n', outPath);\n\n%%% END SCRIPT %%%"
   }
 }

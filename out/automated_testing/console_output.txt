@@ -1,0 +1,35 @@
+Starting parameter sweep for fPWM, fN...
+
+Setting fPWM = 40000, fN = 500
+  Running simulation...
+  Retrieving scope data...
+
+Setting fPWM = 41000, fN = 500
+  Running simulation...
+  Retrieving scope data...
+
+Setting fPWM = 40000, fN = 600
+  Running simulation...
+  Retrieving scope data...
+
+Setting fPWM = 41000, fN = 600
+  Running simulation...
+  Retrieving scope data...
+  Custom operations...
+
+Parameter sweep results:
+  fPWM	fN	Average signal
+  40000	500	339.886
+  41000	500	339.916
+  40000	600	328.674
+  41000	600	328.596
+
+Best average signal:
+  fPWM	fN	Average signal
+  41000	500	339.916
+
+Worst average signal:
+  fPWM	fN	Average signal
+  41000	600	328.596
+
+Parameter sweep completed. Results written to ../out/automated_testing

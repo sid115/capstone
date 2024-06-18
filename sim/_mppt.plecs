@@ -1,5 +1,5 @@
 Plecs {
-  Name          "mppt"
+  Name          "_mppt"
   Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -69,7 +69,7 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [1198, 25; 2472, 1554]
+    Location      [0, 25; 1274, 1554]
     ZoomFactor    1
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -217,7 +217,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [1198, 25; 2472, 1554]
+        Location      [0, 25; 1274, 1554]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -232,7 +232,7 @@ Plecs {
           LabelPosition south
           Parameter {
             Variable      "DialogGeometry"
-            Value         "[1200 25 1276 1571]"
+            Value         "[0 25 1276 1571]"
             Show          off
           }
           Parameter {
@@ -309,7 +309,13 @@ Plecs {
 "float m_step = 0; // value by which m is increased or reduced\n"
 "float direction = 1; // -1 (down) or 1 (up)\n"
 "float i_C = 0; // capacitor current in A\n"
-"float i_C_pre = 0; // capacitor current of previous iteration"
+"float i_C_pre = 0; // capacitor current of previous iteration\n"
+"int counter = 0; //Count steps of setting back to 1\n"
+"int sweepCounter = 0;\t//step counter, to trigger the sweep\n"
+"int sweepValue = 250;\t//after how many counts the sweep will be done\n"
+"float sweepMax = 0;\t\t//i_C measured in the sweep\n"
+"float sweepMaxOld = 0;\t//old i_C value to compare\n"
+"float mMax = 0;\t\t\t//m at which i_C is max"
             Show          off
           }
           Parameter {
@@ -320,25 +326,23 @@ Plecs {
           }
           Parameter {
             Variable      "OutputFcn"
-            Value         "/* adopt values */\n"
-"i_C_pre = i_C;\n"
-"\n"
-"/* read input */\n"
-"i_C = InputSignal(0,0);\n"
-"\n"
-"/* change direction if previous value was better */\n"
-"if (i_C_pre > i_C) direction *= -1; // change direction\n"
-"// else keep direction -> do nothing\n"
-"\n"
-"/* calculate new m */\n"
-"m += m_step * direction;\n"
-"\n"
-"/* restrict m */\n"
-"if (m < 0) m = 0.01;\n"
-"if (m > 1.5) m = 1.49;\n"
-"\n"
-"/* output m */\n"
-"OutputSignal(0,0) = m;"
+            Value         base64 "LyogYWRvcHQgdmFsdWVzICovCmlfQ19wcmUgPSBpX0M7"
+"CgovKiByZWFkIGlucHV0ICovCmlfQyA9IElucHV0U2lnbmFsKDAsMCk7CgovKiBjaGFuZ2UgZGlyZ"
+"WN0aW9uIGlmIHByZXZpb3VzIHZhbHVlIHdhcyBiZXR0ZXIgKi8KaWYgKGlfQ19wcmUgPiBpX0MpIG"
+"RpcmVjdGlvbiAqPSAtMTsgLy8gY2hhbmdlIGRpcmVjdGlvbgovLyBlbHNlIGtlZXAgZGlyZWN0aW9"
+"uIC0+IGRvIG5vdGhpbmcKCi8vbm9ybWFsIGFkZGFwdGluZyBvZiBtCmlmKHN3ZWVwQ291bnRlciA8"
+"c3dlZXBWYWx1ZSl7CgkvKiBjYWxjdWxhdGUgbmV3IG0gKi8KCW0gKz0gbV9zdGVwICogZGlyZWN0a"
+"W9uOwoKCS8qIHJlc3RyaWN0IG0gKi8KCWlmIChtIDwgMCkgbSA9IDAuMDE7CglpZiAobSA+IDEuMC"
+"l7CgkJbSA9IDEuMDsKCQljb3VudGVyID0gY291bnRlcisxOwoJfQp9CgovL3Jlc2V0IGFsbCB2YXJ"
+"pYWJsZXMgZsO8ciB0aGUgc3dlZXAKaWYoc3dlZXBDb3VudGVyID09IHN3ZWVwVmFsdWUpewoJbSA9"
+"IDA7Cglzd2VlcE1heE9sZCA9IDA7Cglzd2VlcE1heCA9IDA7Cn0Kc3dlZXBDb3VudGVyID0gc3dlZ"
+"XBDb3VudGVyICsxOwoKLy9Td2VlcCBmdW5rY3Rpb24KaWYoc3dlZXBDb3VudGVyID4gc3dlZXBWYW"
+"x1ZSl7CgltID0gbSswLjA1OwoJLy9tIGNhbiBub3QgYmUgaGlnaGVyIHRoYW4gMSwgc28gcmVzZXQ"
+"gdGhlIGNvdW50ZXIgaGVyZQoJaWYobT49MS4wKXsKCQlzd2VlcENvdW50ZXIgPSAwOwoJCW09bU1h"
+"eDsKCQltTWF4ID0gMDsKCX0KCQoJLy9jb21wYXJlIHRoZSBvbGQgYW4gbmV3IGlfQwoJc3dlZXBNY"
+"XhPbGQgPSBzd2VlcE1heDsKCXN3ZWVwTWF4ID0gSW5wdXRTaWduYWwoMCwwKTsKCWlmKHN3ZWVwTW"
+"F4ID49IHN3ZWVwTWF4T2xkKXsKCQltTWF4ID0gbTsKCX0KfQoJCi8qIG91dHB1dCBtICovCk91dHB"
+"1dFNpZ25hbCgwLDApID0gbTs="
             Show          off
           }
           Parameter {

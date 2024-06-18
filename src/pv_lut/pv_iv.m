@@ -1,6 +1,6 @@
 %%% READ CSV DATA %%%
 
-filename = '../out/pv_lut.csv'; % this only works on UNIX systems
+filename = '../../out/pv_lut.csv'; % this only works on UNIX systems
 data = dlmread(filename, ',');
 
 % Extract columns

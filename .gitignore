@@ -3,3 +3,6 @@
 *.log
 *.out
 *.toc
+
+automated_testing/*.csv
+automated_testing/*.bmp

@@ -1,5 +1,5 @@
 Plecs {
-  Name          "pwm"
+  Name          "_pwm"
   Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -64,17 +64,21 @@ Plecs {
     Type          Output
     Index         "2"
   }
+  Terminal {
+    Type          Input
+    Index         "2"
+  }
   Schematic {
-    Location      [1198, 25; 3750, 1554]
+    Location      [0, 25; 1274, 1554]
     ZoomFactor    1.77778
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
       Type          Input
-      Name          "m"
+      Name          "fN"
       Show          on
-      Position      [50, 55]
+      Position      [50, 30]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -168,9 +172,14 @@ Plecs {
         Position      [-40, 0]
         Direction     left
       }
+      Terminal {
+        Type          Input
+        Position      [-40, -10]
+        Direction     left
+      }
       Schematic {
-        Location      [1198, 25; 2472, 1554]
-        ZoomFactor    1
+        Location      [0, 25; 1274, 1554]
+        ZoomFactor    1.96257
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -625,16 +634,16 @@ Plecs {
         }
         Component {
           Type          Constant
-          Name          "omegaN"
+          Name          "2pi"
           Show          on
-          Position      [80, 335]
+          Position      [70, 320]
           Direction     right
           Flipped       off
           LabelPosition south
           Frame         [-25, -10; 25, 10]
           Parameter {
             Variable      "Value"
-            Value         "2*pi*fN"
+            Value         "2*pi"
             Show          off
           }
           Parameter {
@@ -647,7 +656,7 @@ Plecs {
           Type          Clock
           Name          "Clock"
           Show          on
-          Position      [90, 300]
+          Position      [80, 280]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -667,7 +676,7 @@ Plecs {
           }
           Parameter {
             Variable      "Inputs"
-            Value         "2"
+            Value         "3"
             Show          off
           }
           Parameter {
@@ -721,7 +730,7 @@ Plecs {
         }
         Component {
           Type          Input
-          Name          "3"
+          Name          "m"
           Show          on
           Position      [120, 245]
           Direction     right
@@ -730,6 +739,25 @@ Plecs {
           Parameter {
             Variable      "Index"
             Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "fN"
+          Show          on
+          Position      [70, 360]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Index"
+            Value         "4"
             Show          on
           }
           Parameter {
@@ -877,13 +905,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Clock"
           SrcTerminal   1
-          Points        [110, 300]
+          Points        [110, 280]
           DstComponent  "Product"
           DstTerminal   2
         }
         Connection {
           Type          Signal
-          SrcComponent  "omegaN"
+          SrcComponent  "2pi"
           SrcTerminal   1
           DstComponent  "Product"
           DstTerminal   3
@@ -906,7 +934,6 @@ Plecs {
           Type          Signal
           SrcComponent  "Mux3"
           SrcTerminal   1
-          Points        [575, 135; 580, 135]
           DstComponent  "1"
           DstTerminal   1
         }
@@ -914,15 +941,14 @@ Plecs {
           Type          Signal
           SrcComponent  "Mux4"
           SrcTerminal   1
-          Points        [575, 240; 580, 240]
           DstComponent  "2"
           DstTerminal   1
         }
         Connection {
           Type          Signal
-          SrcComponent  "3"
+          SrcComponent  "m"
           SrcTerminal   1
-          Points        [140, 245; 185, 245; 185, 245]
+          Points        [185, 245]
           Branch {
             DstComponent  "Product1"
             DstTerminal   3
@@ -933,14 +959,44 @@ Plecs {
             DstTerminal   3
           }
         }
+        Connection {
+          Type          Signal
+          SrcComponent  "fN"
+          SrcTerminal   1
+          Points        [105, 360; 105, 330]
+          DstComponent  "Product"
+          DstTerminal   4
+        }
       }
     }
-    Connection {
-      Type          Signal
-      SrcComponent  "m"
-      SrcTerminal   1
-      DstComponent  "PWM"
-      DstTerminal   3
+    Component {
+      Type          Input
+      Name          "m"
+      Show          on
+      Position      [50, 70]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "2"
+        Show          on
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
     }
     Connection {
       Type          Signal
@@ -957,6 +1013,22 @@ Plecs {
       Points        [185, 55]
       DstComponent  "HL2"
       DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "fN"
+      SrcTerminal   1
+      Points        [70, 45]
+      DstComponent  "PWM"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "m"
+      SrcTerminal   1
+      Points        [70, 55]
+      DstComponent  "PWM"
+      DstTerminal   3
     }
   }
 }
