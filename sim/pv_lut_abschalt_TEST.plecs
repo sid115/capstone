@@ -69,11 +69,11 @@ Plecs {
   ScriptsDialogGeometry "[429 357 1276 571]"
   ScriptsDialogSplitterPos "48"
   Schematic {
-    Location      [0, 24; 1920, 1002]
-    ZoomFactor    0.916085
-    SliderPosition [0, 0]
+    Location      [0, 23; 1536, 795]
+    ZoomFactor    1.19968
+    SliderPosition [-1, -1]
     ShowBrowser   on
-    BrowserWidth  158
+    BrowserWidth  157
     Component {
       Type          MosfetWithDiode
       Name          "T1D1"
@@ -2843,19 +2843,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 24; 1920, 1024]
+      Location      [0, 26; 1920, 1030]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAASEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAeAAAABVfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABEAP///wAAB4AAAAJuAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAVkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAlgAAAA0vw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAACWAAAABfAP///wAACWAAAAPxAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALOAMAAAAFAAAAA"
-"wAAAE4AAAAEAAAATgAAAAUAAABOAAAACAAAAE4AAAAJAAAATgAAB4AAAAALAQAAAQAAAAAAAAAAAA"
-"AAAGT/////AAAAgQAAAAAAAAALAAAAvAAAAAEAAAAAAAAATgAAAAEAAAAAAAAATgAAAAEAAAAAAAA"
-"AAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAATgAAAAEAAAAAAAAATgAAAAEAAAAA"
-"AAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAFjAAAAAEAAAAAAAAD6AAAAAAj"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"AAAAE4AAAAJAAAATgAAAAYAAABOAAAABwAAAE4AAAAEAAAATgAAAAUAAABOAAAAAgAAAE4AAAADAA"
+"AATgAAAAEAAABOAAAJYAAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAC8AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AikAAAAAQAAAAAAAAPoAAAAACs="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -2865,7 +2866,7 @@ Plecs {
       TimeRange     "0.0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -2968,27 +2969,7 @@ Plecs {
           AutoScale     1
           MinValue      0
           MaxValue      1
-          Signals       {"i_L_f"}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
           Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {"p_trans"}
           Untangle      0
           KeepBaseline  off
           BaselineValue 0
@@ -3018,7 +2999,27 @@ Plecs {
           AutoScale     1
           MinValue      0
           MaxValue      1
-          Signals       {"i_PV"}
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
           Untangle      0
           KeepBaseline  off
           BaselineValue 0
@@ -5362,7 +5363,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From21"
       SrcTerminal   1
-      Points        [539, 525; 539, 530; 540, 530; 555, 530]
+      Points        [539, 530; 555, 530]
       Branch {
         DstComponent  "Product5"
         DstTerminal   2
@@ -5377,7 +5378,7 @@ Plecs {
       Type          Signal
       SrcComponent  "From22"
       SrcTerminal   1
-      Points        [539, 545; 539, 540; 540, 540; 560, 540]
+      Points        [539, 540; 560, 540]
       Branch {
         DstComponent  "Product5"
         DstTerminal   3
