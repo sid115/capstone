@@ -1,0 +1,89 @@
+<mxfile host="Electron" modified="2024-06-25T19:29:12.605Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="l7pd3lAbXI9fz3--DlBN" version="22.0.3" type="device">
+  <diagram name="Seite-1" id="BdQRB7PYRYoQyghn_zuu">
+    <mxGraphModel dx="842" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="37lnFU4IT176ynCIGFYg-21" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="484" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-12" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#4495d1;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+          <mxGeometry x="437" y="484" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;dashPattern=12 12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="310" width="390" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-1" value="Existierende &lt;br&gt;PLECS-Simulation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="437" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-2" value="STM32 Inputs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="340" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-3" value="STM32 Outputs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="340" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-5" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=#ffffff;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.cpu;fillStyle=auto;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="454" y="514" width="73" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-9" value="&lt;b&gt;PLECS&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="310" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-10" value="&lt;font color=&quot;#4495d1&quot;&gt;Code&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="460.5" y="530" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-13" value="&lt;b&gt;&lt;font color=&quot;#4495d1&quot;&gt;STM32&amp;nbsp;μC&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="447" y="484" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-16" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.mosfets1.n-channel_mosfet_1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="607.25" y="515.25" width="55.5" height="59.5" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-18" value="&lt;b&gt;Hardware&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="588" y="484" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-22" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=6.8;endSize=2.6399999999999997;endWidth=10.48;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="37lnFU4IT176ynCIGFYg-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="370" as="sourcePoint" />
+            <mxPoint x="420" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-23" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=6.8;endSize=2.6399999999999997;endWidth=10.48;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="37lnFU4IT176ynCIGFYg-1" target="37lnFU4IT176ynCIGFYg-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="370" as="sourcePoint" />
+            <mxPoint x="580" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-25" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=6.8;endSize=2.6399999999999997;endWidth=10.48;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=block;startWidth=10.48;startSize=3.0990291262135923;" edge="1" parent="1" source="37lnFU4IT176ynCIGFYg-12" target="37lnFU4IT176ynCIGFYg-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="544" as="sourcePoint" />
+            <mxPoint x="550" y="534" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.82;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="37lnFU4IT176ynCIGFYg-1" target="37lnFU4IT176ynCIGFYg-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="490" as="sourcePoint" />
+            <mxPoint x="490" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-27" value="Codegenerierung,&lt;br&gt;Kompilierung" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="37lnFU4IT176ynCIGFYg-26">
+          <mxGeometry x="0.5018" y="1" relative="1" as="geometry">
+            <mxPoint x="52" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-29" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;width=6.8;endSize=2.6399999999999997;endWidth=10.48;entryX=0.329;entryY=0.999;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;startArrow=block;startWidth=10.48;startSize=3.0990291262135923;entryPerimeter=0;strokeColor=#4495d1;" edge="1" parent="1" source="37lnFU4IT176ynCIGFYg-13" target="37lnFU4IT176ynCIGFYg-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="557" y="535" as="sourcePoint" />
+            <mxPoint x="590" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-30" value="&lt;font color=&quot;#4495d1&quot;&gt;Online Debug&lt;br&gt;(External Mode)&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="37lnFU4IT176ynCIGFYg-29">
+          <mxGeometry x="0.1429" y="1" relative="1" as="geometry">
+            <mxPoint x="-51" y="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37lnFU4IT176ynCIGFYg-32" value="PLECS ermöglicht eine schnelle Adaption von existierenden Simulationen auf reale Hardware, indem Ein- und Ausgänge des uCs in der Simulation definiert werden. PLECS generiert und kompiliert entsprechenden Code automatisch und ermöglicht das Betrachten und Setzen von Größen auf dem uC online und nativ in der bestehenden Simulationsumgebung." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="360" width="240" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
