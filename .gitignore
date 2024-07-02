@@ -47,4 +47,6 @@ automated_testing/*.bmp
 
 # Windows-specific files
 Thumbs.db
+
+# Drawio backup files
 *.bkp
