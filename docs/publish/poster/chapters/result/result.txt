@@ -1,5 +1,6 @@
 Zusammenfassung und Ausblick:
 Zusammenfassend lässt sich sagen, dass die Modelierung sowohl des PV-Modules, als auch des restlichen Aufbaus samt MPPT-Tracker in PLECS umsetzbar ist. 
-Die genannten Testfälle lassen sich samt automatisierter Testung umsetzen und auf mögliche Risiken und Probleme hin untersuchen.
-Die Codegenerierung aus PLECS heraus ist ebenfalls möglich und ermöglicht schon einfache Programme auf dem STM32 auszuführen.
-Aufbauend darauf wäre der nächste Schritt, den Aufau aus PLECS umzusetzen, und sowohl diesen, als auch den MPPT Algorithmus auf dem STM32 praktisch zu testen.
+Die genannten Testfälle lassen sich mittels automatisierter Simulation auf mögliche Risiken und Probleme hin untersuchen.
+Die Codegenerierung für den STM32 aus PLECS heraus ist ebenfalls möglich und ermöglicht das native Ausführen einfacher Programme auf diesem.
+Fortführende Arbeitspakete wären der reale Aufbau der simulierten Schaltung, das Integrieren des STM32 in diese und das Testen des realen Aufbaus.
+% Aufbauend darauf wäre der nächste Schritt, den Aufau aus PLECS umzusetzen, und sowohl diesen, als auch den MPPT Algorithmus auf dem STM32 praktisch zu testen.
