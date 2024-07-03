@@ -1,0 +1,5 @@
+- schnelle Adaption von existierenden Simulationen auf reale Hardware
+- Ein- und Ausgänge werden in der Simulation definiert
+- Codegenerierung und Kompilierung in Plecs
+- Betrachten und Setzen von Größen online und nativ in der bestehenden Simulationsumgebung
+- Simulation als "Hardware in the Loop" so nicht möglich
