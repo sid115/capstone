@@ -1,6 +1,7 @@
 Einleitung:
-Dieses Projekt beschäftigt sich mit der Modelierung eines einphasigen MPPT Tracking eines PV-Generators auf einen Widerstand.
+%Dieses Projekt beschäftigt sich mit der Modellierung eines einphasigen MPPT Trackers eines PV-Generators auf einen Widerstand.
+Dieses Projekt beschäftigt sich mit der Modellierung eines einphasigen PV-Wechelrichters mit MPPT Tracking, welcher zum Testen von PV-Modulen Anwendung findet. 
 Die Umsetzung erfolgt in der Software PLECS.
 Die Schwerpunkte sind dabei zunächst eine Modelierung des PV-Moduls unter der Abhängigkeit von Temperatur und Lichtintensität sowie der Umsetzung eines Algorithmuses zum MPPT Tracking.
 Des weiteren wird die Detektion eines Lastabwurfes, eine intelligente Abschaltung sowie eine Hochfahrroutine untersucht.
-Aufbauend darauf soll die implementierte Codegenerierung für einen STM32 aus PLECS heraus durchgeführt und getestet, sowie die weitere technische mögliche Umsetzung recherchiert werden.
+Aufbauend darauf soll die implementierte Codegenerierung für einen STM32 aus PLECS heraus durchgeführt und getestet, sowie die weitere technisch mögliche Umsetzung recherchiert werden.
