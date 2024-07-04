@@ -4,3 +4,8 @@ Die genannten Testfälle lassen sich mittels automatisierter Simulation auf mög
 Die Codegenerierung für den STM32 aus PLECS heraus ist ebenfalls möglich und ermöglicht das native Ausführen einfacher Programme auf diesem.
 Fortführende Arbeitspakete wären der reale Aufbau der simulierten Schaltung, das Integrieren des STM32 in diese und das Testen des realen Aufbaus.
 % Aufbauend darauf wäre der nächste Schritt, den Aufau aus PLECS umzusetzen, und sowohl diesen, als auch den MPPT Algorithmus auf dem STM32 praktisch zu testen.
+
+- Modelierung und Simulation in PLECS umsetzbar
+- Möglichkeit des automatisierten Testen besteht
+- Codegenerierung für STM32 in PLECS implementiert und funktionsfähig
+- fortführend ist Umsetzung als Aufbau und ausführen des MPPT-Algorithmus auf STM32 möglich

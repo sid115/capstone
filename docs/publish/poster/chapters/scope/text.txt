@@ -1,0 +1,5 @@
+- Simulation des Wechselrichters
+- oben: blau -> Leistung des Sonnenlicht in W/m^2
+	grün -> Momentanleistung am Lastwiderstand
+	rot  -> Effektivleistung am Lastwiderstand
+- unten: Modulationsgrad mit regelmäßigem Aufruf einer Sweepfunktion
