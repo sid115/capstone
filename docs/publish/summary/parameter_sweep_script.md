@@ -1,5 +1,7 @@
 # Kurzanleitung: ParameterSweepSequential Simulationsskript
 
+Im Rahmen der Test- und Validierungsarbeiten wurde auch eine Parametrisierungsschnittstelle entwickelt. Jenes PLECS-Simulationsskript führt einen mehrdimensionalen Parameter-Sweep durch und speichert die zeitlich definierten Scopedaten in einer CSV-Datei. Die Parameter können frei gewählt werden. Mit Hilfe der Scope-Simulationsdaten können die Ergebnisse analysiert und visualisiert werden, um ein optimales Wertevektor der Eingaben für ein gegebenes Kriterium zu finden.
+
 Diese Anleitung beschreibt, wie das PLECS Simulationsskript `ParameterSweepSequential` verwendet wird, um Parameter-Sweeps durchzuführen und die Ergebnisse zu analysieren.
 
 ## Setup
